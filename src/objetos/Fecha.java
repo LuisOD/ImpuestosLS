@@ -56,8 +56,9 @@ public class Fecha {
     @Override
     public String toString(){
         //mes>0&&mes<10?mes="0":"";
-        return String.format(+0+"%d/"+0+"%d/%d",dia,mes,anio);//if
+        return String.format("%02d/%02d/%02d",dia,mes,anio);//if
     }
+    
     public char diaSemana(){
          System.out.println("Hoy es : " + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
         return 0;

@@ -9,7 +9,7 @@ public class Impuestos {
 
     public static void main(String[] args) {
  
-        Fecha f = new Fecha();
+        Fecha f = new Fecha(2,2,2012);
         System.out.println(f);
         System.out.println(f.diaSemana());
         System.out.println(f.fechaValida()); 
