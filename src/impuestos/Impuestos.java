@@ -11,8 +11,10 @@ public class Impuestos {
  
         Fecha f = new Fecha();
         System.out.println(f);
+        System.out.println(f.diaSemana());
         System.out.println(f.fechaValida()); 
-       
+        
+        
     }
     
 }
