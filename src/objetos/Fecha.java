@@ -3,6 +3,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Calendar;
+import java.util.HashSet;
 /*
  * @author Luis_Od
  */
@@ -12,8 +13,7 @@ public class Fecha implements Comparable<Fecha>{
     private Integer mes;
     private Integer anio;
     
-    private static HashSet<Fecha> diasinhabil = new HashSet<Fecha>;
-    
+    private static HashSet<Fecha> diasinhabil = new HashSet<Fecha>();
     
     public Fecha(Integer dia,Integer mes,Integer anio){
         this.dia = dia;
@@ -26,9 +26,9 @@ public class Fecha implements Comparable<Fecha>{
         mes = date.getMonthValue();
         anio = date.getYear();
     }
+//Fecha valida de 1900 a 2100
     public boolean fechaValida(){
         int diaAux=0;
-        int mesAux =0;
         if((anio>=1900)&&(anio<=2100)){
             if((mes>=1)&&(mes<=12)){
                 switch(mes){
@@ -58,12 +58,87 @@ public class Fecha implements Comparable<Fecha>{
         }
         return false;
     }
+    //incrementar fecha
+    public void aumentar(){
+        int diaAux = 0;
+        dia++;
+        switch(mes){
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        diaAux = 31;
+                        break;
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11: 
+                        diaAux = 30;
+                        break;
+                    case 2:
+                        diaAux = anio % 4 == 0 ? 29 : 28;
+                        break;
+                }
+        if(dia>diaAux){
+            mes++;
+            dia =1;
+        }
+        if(mes>12){
+            anio++;
+            mes =1;
+        }
+    }
+    public void aumentar(Integer aum){
+        int diaAux = 0;
+        dia=dia + aum;
+        switch(mes){
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        diaAux = 31;
+                        break;
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11: 
+                        diaAux = 30;
+                        break;
+                    case 2:
+                        diaAux = anio % 4 == 0 ? 29 : 28;
+                        break;
+                }
+        if(dia>diaAux){
+            dia=dia-diaAux;
+            mes++;
+        }
+        if(mes>12){
+            anio++;
+        }
+    }
+    //impresion de fecha
     @Override
     public String toString(){
         //mes>0&&mes<10?mes="0":"";
         return String.format("%02d/%02d/%02d",dia,mes,anio);//if
         //System.out.println(strDays[now.get(Calendar.DAY_OF_WEEK)-1];/
     }
+    //dia inhabil
+    public static void agregarDiaInhabil(Fecha f){
+        diasinhabil.add(f);
+    }
+    public static boolean esDiaInhabil(Fecha f){
+        return diasinhabil.equals(f);
+    }
+    //
+    
+    //comparacion de fecha
     public int compareTo(Fecha fechita){
            int resultado = this.anio - fechita.anio;
         if(resultado==0){
@@ -74,6 +149,7 @@ public class Fecha implements Comparable<Fecha>{
         }
         return resultado; 
     }
+    //igualar fechas
     @Override
     public boolean equals(Object obj){
         if(obj instanceof Fecha){
@@ -81,6 +157,7 @@ public class Fecha implements Comparable<Fecha>{
         }
         return false;
     }
+    
     public int hashCode(){
         int hash =7;
         hash = 71 * hash * Objects.hashCode(this.dia);
@@ -141,12 +218,5 @@ public class Fecha implements Comparable<Fecha>{
     String[] strDays = new String[]{
         "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes","Sabado"
     };
-    public Date sumarRestarDiasFecha(Date fecha, int dias){
- 
-      Calendar calendar = Calendar.getInstance();
-      calendar.setTime(fecha);
-      calendar.add(Calendar.DAY_OF_YEAR, dias);
-      
-      return calendar.getTime();
-    }
+
 }

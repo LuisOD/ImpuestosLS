@@ -25,13 +25,15 @@ public class Impuestos {
         fechaInhabil.add(new Fecha(1,1,2017));
         fechaInhabil.add(new Fecha(24,2,2017));
         
-        for (Fecha fechaInhabil : fechaInhabil){
-            System.out.println(fechaInhabil);
-        }
-        HashSet<Fecha> fechas = new HashSet<Fecha>();
+       // for (Fecha fechaInhabil : fechaInhabil){
+         //   System.out.println(fechaInhabil);
+       // }
+        
+        HashSet<Fecha> fechas = new HashSet<>();
         fechas.add(new Fecha(dia));
         fechas.add(new Fecha(mes));      
         fechas.add(new Fecha(anio));
+        
         System.out.println("*******+");
         System.out.println(f.diaSemana());//dia de la semana
         

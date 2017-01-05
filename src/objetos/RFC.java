@@ -14,9 +14,7 @@ public class RFC {
     private boolean personafisica;
     
     public boolean isValido(){
-        return rfc.matches('sadad');
+        return rfc.matches(sadad);
     }
-            
-
     
 }
