@@ -1,25 +1,30 @@
 package objetos;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Calendar;
 /*
  * @author Luis_Od
  */
-public class Fecha {
+public class Fecha implements Comparable<Fecha>{
     
     private Integer dia;
     private Integer mes;
     private Integer anio;
-
+    
+    private static HashSet<Fecha> diasinhabil = new HashSet<Fecha>;
+    
+    
     public Fecha(Integer dia,Integer mes,Integer anio){
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
     }
     public Fecha(){
-        Date date = new Date();
-        dia = date.getDay()+1;
-        mes = date.getMonth()+1;
-        anio = date.getYear()+1900;
+        LocalDate date= LocalDate.now();
+        dia = date.getDayOfMonth();
+        mes = date.getMonthValue();
+        anio = date.getYear();
     }
     public boolean fechaValida(){
         int diaAux=0;
@@ -57,11 +62,62 @@ public class Fecha {
     public String toString(){
         //mes>0&&mes<10?mes="0":"";
         return String.format("%02d/%02d/%02d",dia,mes,anio);//if
+        //System.out.println(strDays[now.get(Calendar.DAY_OF_WEEK)-1];/
+    }
+    public int compareTo(Fecha fechita){
+           int resultado = this.anio - fechita.anio;
+        if(resultado==0){
+            resultado = this.mes -fechita.mes;
+            if(resultado==0){
+                resultado=this.dia-fechita.dia;
+            }
+        }
+        return resultado; 
+    }
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Fecha){
+            return compareTo((Fecha)obj)==0;
+        }
+        return false;
+    }
+    public int hashCode(){
+        int hash =7;
+        hash = 71 * hash * Objects.hashCode(this.dia);
+        hash = 71 * hash * Objects.hashCode(this.mes);
+        hash = 71 * hash * Objects.hashCode(this.anio);
+        return hash;
+    }
+    public void incrementar(){
+        dia++;
+        if(dia>diaDelMes()){
+            mes++;
+            dia=1;
+            if(mes>12){
+                mes=1;
+                anio++;
+            }
+        }
     }
     
-    public char diaSemana(){
-         System.out.println("Hoy es : " + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
-        return 0;
+    public void incremenatarDiasinhabiles(DayOfWeek ...days){
+        boolean bandera =false;
+        do{
+            incrementar();
+            for (int days[i] = 0; days[i] < 10; days[i]++) {
+                
+            }
+        }while(lsdiainhabil(this));
+    }
+    
+    
+    //public char diaSemana(){
+      //   System.out.println("El dia de hoy: " + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
+        //return 0;
+    //}
+    public DayOfWeek diaSemana(){
+        LocalDate dateTemporal = LocalDate.of(anio,mes,dia);
+        return dateTemporal.getDayOfWeek();
     }
     public Integer getDia(){
         return dia;
@@ -92,6 +148,5 @@ public class Fecha {
       calendar.add(Calendar.DAY_OF_YEAR, dias);
       
       return calendar.getTime();
-	
- }
+    }
 }
