@@ -2,8 +2,10 @@
 package impuestos;
 import java.util.ArrayList;
 import java.util.HashSet;
+import objetos.Direciones;
 import objetos.Fecha;
 import objetos.RFC;
+import objetos.TipoDireccion;
 /**
  *
  * @author Luis_Od
@@ -50,7 +52,10 @@ public class Impuestos {
         
         System.out.println("*********");
         RFC r1 = new RFC();
-        System.out.println();
+        System.out.println("*****");
+        
+        Direciones dir = new Direciones(TipoDireccion.FISICA," horacio", "noExterior", "noInterior", "colonia", "68000", "municipio");
+        System.out.println(dir);//impresion de direccion
                 
     }
 }

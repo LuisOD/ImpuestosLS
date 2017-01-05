@@ -8,8 +8,8 @@ import java.util.Objects;
  */
 public class RFC {
     private String rfc;
-    private boolean personaFisica;
-    private boolean personaMoral;
+    private TipodePersona Fisica;
+    private TipodePersona Moral;
     
     
     
