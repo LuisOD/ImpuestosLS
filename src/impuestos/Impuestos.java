@@ -3,6 +3,7 @@ package impuestos;
 import java.util.ArrayList;
 import java.util.HashSet;
 import objetos.Fecha;
+import objetos.RFC;
 /**
  *
  * @author Luis_Od
@@ -46,6 +47,10 @@ public class Impuestos {
         fechas.add(new Fecha());
         fechas.add(new Fecha());      
         fechas.add(new Fecha());
+        
+        System.out.println("*********");
+        RFC r1 = new RFC();
+        System.out.println();
                 
     }
 }
