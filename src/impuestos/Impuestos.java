@@ -10,14 +10,27 @@ import objetos.Fecha;
 public class Impuestos {
 
     public static void main(String[] args) {
-        
+       
         Fecha f = new Fecha(20,11,1996);
         Fecha f1 = new Fecha(20,10,1996);
         System.out.println(f);
         System.out.println(f.diaSemana());
         System.out.println(f.fechaValida()); 
-        
-        System.out.println(f.compareTo(f1));
+        //aumentar fechas
+        //f.aumentar();
+        //System.out.println(f);
+        //f.decrementar();
+        //System.out.println(f);
+        //f.aumentar(24);
+        //System.out.println(f);
+        //f.decrementar(2);
+        //System.out.println(f);
+        System.out.println("*******+");
+        System.out.println(f.diaSemana());//dia de la semana
+        System.out.println(f.diaSemanaa());//dia de la semana
+              
+        System.out.println(f.compareTo(f1)); //comparacion de fechas de f a f1
+        System.out.println(f1.compareTo(f)); //comparacion de fechas de f1 a f
         System.out.println(f);
         System.out.println(f1);
         System.out.println("********");
@@ -25,19 +38,14 @@ public class Impuestos {
         fechaInhabil.add(new Fecha(1,1,2017));
         fechaInhabil.add(new Fecha(24,2,2017));
         
-       // for (Fecha fechaInhabil : fechaInhabil){
-         //   System.out.println(fechaInhabil);
-       // }
+        for (Fecha fechaInhabile : fechaInhabil) {
+            System.out.println(fechaInhabile);    
+        }
         
         HashSet<Fecha> fechas = new HashSet<>();
-        fechas.add(new Fecha(dia));
-        fechas.add(new Fecha(mes));      
-        fechas.add(new Fecha(anio));
-        
-        System.out.println("*******+");
-        System.out.println(f.diaSemana());//dia de la semana
-        
-        
+        fechas.add(new Fecha());
+        fechas.add(new Fecha());      
+        fechas.add(new Fecha());
+                
     }
-    
 }
