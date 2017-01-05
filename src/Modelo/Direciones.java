@@ -1,11 +1,13 @@
 
-package objetos;
+package Modelo;
+
+import objetos.TipodeDireccion;
 
 /**
  * @author Luis_Od
  */
 public class Direciones {
-    private TipoDireccion tipo;
+    private TipodeDireccion tipo;
     private String calle;
     private String noExterior;
     private String noInterior;
@@ -16,17 +18,19 @@ public class Direciones {
    
     public boolean validar(){
         boolean resultado = true;
-        if(!cp.matches("/^[0-9]+(5)/")){ //expresion regular para numeros)
-            throw new 
-        }
-            resultado = resultado && 
+       // if(!cp.matches("/^[0-9]+(5)/")){ //expresion regular para numeros)
+       //     throw  new 
+       // }
+       // else{
+            
+      //  }
         resultado = resultado && calle.matches("/^[a-zA-Z]+$/"); //expresion regular para letras
         
         
         return resultado;
     }
 
-    public Direciones(TipoDireccion tipo, String calle, String noExterior, String noInterior, String colonia, String cp, String municipio) {
+    public Direciones(TipodeDireccion tipo, String calle, String noExterior, String noInterior, String colonia, String cp, String municipio) {
         this.tipo = tipo;
         this.calle = calle.toUpperCase();
         this.noExterior = noExterior;
@@ -37,10 +41,10 @@ public class Direciones {
         validar();
     }
 
-    public TipoDireccion getTipo() {
+    public TipodeDireccion getTipo() {
         return tipo;
     }
-    public void setTipo(TipoDireccion tipo) {
+    public void setTipo(TipodeDireccion tipo) {
         this.tipo = tipo;
     }
     public String getCalle() {

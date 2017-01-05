@@ -2,10 +2,11 @@
 package impuestos;
 import java.util.ArrayList;
 import java.util.HashSet;
-import objetos.Direciones;
+import Modelo.Direciones;
 import objetos.Fecha;
 import objetos.RFC;
-import objetos.TipoDireccion;
+import objetos.Regimen;
+import objetos.TipodeDireccion;
 /**
  *
  * @author Luis_Od
@@ -54,8 +55,19 @@ public class Impuestos {
         RFC r1 = new RFC();
         System.out.println("*****");
         
-        Direciones dir = new Direciones(TipoDireccion.FISICA," horacio", "noExterior", "noInterior", "colonia", "68000", "municipio");
+        Direciones dir = new Direciones(TipodeDireccion.FISICA," horacio", "noExterior", "noInterior", "colonia", "68000", "municipio");
         System.out.println(dir);//impresion de direccion
-                
+        
+        System.out.println("****************");//Regimen
+        HashSet<Regimen> regimenes = new HashSet();
+        regimenes.add(Regimen.IEPS);
+        regimenes.add(Regimen.HOSPEDAJE);
+        regimenes.add(Regimen.INCORPORACIONFISCAL);
+        
+        for (Regimen regimen : regimenes) {
+            System.out.println(regimen);            
+        }
+        
+           
     }
 }
