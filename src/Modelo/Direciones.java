@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import Excepciones.DireccionException;
 import objetos.TipodeDireccion;
 
 /**
@@ -16,21 +17,16 @@ public class Direciones {
     private String municipio;
 
    
-    public boolean validar(){
-        boolean resultado = true;
-       // if(!cp.matches("/^[0-9]+(5)/")){ //expresion regular para numeros)
-       //     throw  new 
-       // }
-       // else{
-            
-      //  }
-        resultado = resultado && calle.matches("/^[a-zA-Z]+$/"); //expresion regular para letras
-        
-        
-        return resultado;
+    public void validar() throws DireccionException{
+        if(!cp.matches("^[0-9]{5}$")){ //expresion regular para numeros)
+            throw  new  DireccionException("Codigo postal incorrecto");
+        }
+        else if(!calle.matches("^[A-Z .]*$")){
+            throw new DireccionException("Calle con caracteres no validos"); //expresion regular para letras
+        }
     }
 
-    public Direciones(TipodeDireccion tipo, String calle, String noExterior, String noInterior, String colonia, String cp, String municipio) {
+    public Direciones(TipodeDireccion tipo, String calle, String noExterior, String noInterior, String colonia, String cp, String municipio) throws DireccionException{
         this.tipo = tipo;
         this.calle = calle.toUpperCase();
         this.noExterior = noExterior;
@@ -38,7 +34,7 @@ public class Direciones {
         this.colonia = colonia;
         this.cp = cp;
         this.municipio = municipio;
-        validar();
+       
     }
 
     public TipodeDireccion getTipo() {

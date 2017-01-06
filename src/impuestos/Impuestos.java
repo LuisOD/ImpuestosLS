@@ -1,5 +1,6 @@
 
 package impuestos;
+import Excepciones.DireccionException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import Modelo.Direciones;
@@ -13,7 +14,7 @@ import objetos.TipodeDireccion;
  */
 public class Impuestos {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DireccionException {
        
         Fecha f = new Fecha(20,11,1996);
         Fecha f1 = new Fecha(20,10,1996);
@@ -52,19 +53,19 @@ public class Impuestos {
         fechas.add(new Fecha());
         
         System.out.println("*********");
-        RFC r1 = new RFC();
+        //RFC r1 = new RFC();
         System.out.println("*****");
         
-        Direciones dir = new Direciones(TipodeDireccion.FISICA," horacio", "noExterior", "noInterior", "colonia", "68000", "municipio");
+        Direciones dir = new Direciones(TipodeDireccion.FISICA,"calle", "323", "23432", "colonia", "68000", "municipio");
         System.out.println(dir);//impresion de direccion
         
         System.out.println("****************");//Regimen
-        HashSet<Regimen> regimenes = new HashSet();
+        HashSet<Regimen> regimenes = new HashSet<>();
         regimenes.add(Regimen.IEPS);
         regimenes.add(Regimen.HOSPEDAJE);
         regimenes.add(Regimen.INCORPORACIONFISCAL);
         
-        for (Regimen regimen : regimenes) {
+        for (Regimen regimen : regimenes) {//impresion de regimenes
             System.out.println(regimen);            
         }
         

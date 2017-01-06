@@ -1,17 +1,16 @@
 
 package Excepciones;
-
 /**
- *
  * @author Luis_Od
  */
 public class DireccionException extends Exception{
-    public DireccionException(){
-    
+    private String mensaje;
+    public DireccionException(String msg){
+        super(msg);
+        mensaje = msg;
     }
-    public DireccionException(String mensaje){
-        super(mensaje);
-        mensaje=mensaje;
+    public String getMensaje(){
+        return mensaje;
     }
-    
+       
 }

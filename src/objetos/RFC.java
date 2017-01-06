@@ -3,7 +3,6 @@ package objetos;
 import Excepciones.RFCException;
 import java.util.Objects;
 
-
 /**
  * @author Luis_Od
  */
