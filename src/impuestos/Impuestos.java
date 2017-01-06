@@ -68,7 +68,8 @@ public class Impuestos {
         for (Regimen regimen : regimenes) {//impresion de regimenes
             System.out.println(regimen);            
         }
-        
+        System.out.println("******************");
+                
            
     }
 }
