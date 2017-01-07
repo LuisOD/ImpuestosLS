@@ -57,7 +57,11 @@ public class Impuestos {
         System.out.println("*****");
         
         Direciones dir = new Direciones(TipodeDireccion.FISICA,"call21e", "323", "23432", "colonia", "68000", "municipio");
-        System.out.println(dir.getCalle());//impresion de direccion
+        System.out.println(dir.getTipo());//impresion de direccion
+        System.out.println(dir.getCalle());
+        System.out.println(dir.getNoExterior());
+        System.out.println(dir.getNoInterior());
+        System.out.println(dir.getMunicipio());
         
         
         System.out.println("****************");//Regimen
