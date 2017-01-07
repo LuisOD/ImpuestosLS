@@ -56,8 +56,9 @@ public class Impuestos {
         //RFC r1 = new RFC();
         System.out.println("*****");
         
-        Direciones dir = new Direciones(TipodeDireccion.FISICA,"calle", "323", "23432", "colonia", "68000", "municipio");
-        System.out.println(dir);//impresion de direccion
+        Direciones dir = new Direciones(TipodeDireccion.FISICA,"call21e", "323", "23432", "colonia", "68000", "municipio");
+        System.out.println(dir.getCalle());//impresion de direccion
+        
         
         System.out.println("****************");//Regimen
         HashSet<Regimen> regimenes = new HashSet<>();
