@@ -19,10 +19,6 @@ public class RFC {
         }
         
     }
-
-    public RFC() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     private boolean valida(){
         if(tipo == TipodePersona.Fisica){
             return rfc.matches("");
@@ -41,25 +37,6 @@ public class RFC {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final RFC other = (RFC) obj;
-        if (!Objects.equals(this.rfc, other.rfc)) {
-            return false;
-        }
-        if (this.tipo != other.tipo) {
-            return false;
-        }
-        return true;
-    }
+   
      
 }

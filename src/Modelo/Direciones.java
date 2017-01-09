@@ -2,6 +2,7 @@
 package Modelo;
 
 import Excepciones.DireccionException;
+import java.util.Objects;
 import objetos.TipodeDireccion;
 
 /**
@@ -36,6 +37,51 @@ public class Direciones {
         this.municipio = municipio;
        
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.tipo);
+        return hash;
+    }
+//HashCode e Equals automatico
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Direciones other = (Direciones) obj;
+        if (!Objects.equals(this.calle, other.calle)) {
+            return false;
+        }
+        if (!Objects.equals(this.noExterior, other.noExterior)) {
+            return false;
+        }
+        if (!Objects.equals(this.noInterior, other.noInterior)) {
+            return false;
+        }
+        if (!Objects.equals(this.colonia, other.colonia)) {
+            return false;
+        }
+        if (!Objects.equals(this.cp, other.cp)) {
+            return false;
+        }
+        if (!Objects.equals(this.municipio, other.municipio)) {
+            return false;
+        }
+        if (this.tipo != other.tipo) {
+            return false;
+        }
+        return true;
+    }
+    
+//fin    
 
     public TipodeDireccion getTipo() {
         return tipo;

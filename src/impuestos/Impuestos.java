@@ -9,13 +9,14 @@ import objetos.Fecha;
 import objetos.RFC;
 import objetos.Regimen;
 import objetos.TipodeDireccion;
+import objetos.TipodePersona;
 /**
  *
  * @author Luis_Od
  */
 public class Impuestos {
 
-    public static void main(String[] args) throws DireccionException {
+    public static void main(String[] args) throws DireccionException, RFCException {
        
         Fecha f = new Fecha(20,11,1996);
         Fecha f1 = new Fecha(20,10,1996);
@@ -54,51 +55,26 @@ public class Impuestos {
         fechas.add(new Fecha());
         
         System.out.println("*********");
-        //RFC r1 = new RFC();
+        //HashSet<RFC> r = new HashSet<>(); probar 
+                
         System.out.println("*****");
         
         Direciones dir = new Direciones(TipodeDireccion.FISICA,"call21e", "323", "23432", "colonia", "68000", "municipio");
-        System.out.println(dir.getTipo());//impresion de direccion
-        System.out.println(dir.getCalle());
-        System.out.println(dir.getNoExterior());
-        System.out.println(dir.getNoInterior());
-        System.out.println(dir.getMunicipio());
-        
-        
+      
         System.out.println("****************");//Regimen
         HashSet<Regimen> regimenes = new HashSet<>();
-        //regimenes.add(Regimen.IEPS);
-        //regimenes.add(Regimen.HOSPEDAJE);
-        //regimenes.add(Regimen.INCORPORACIONFISCAL);
+        regimenes.add(Regimen.IEPS);
+        regimenes.add(Regimen.HOSPEDAJE);
+        regimenes.add(Regimen.CEDULAR);
+        regimenes.add(Regimen.INCORPORACIONFISCAL);
+        regimenes.add(Regimen.INTERMEDIO);
         
         for (Regimen regimen : regimenes) {//impresion de regimenes
-            System.out.println(regimen);            
+            System.out.print(regimen.getNumerito());            
+            System.out.println(" "+regimen);
         }
         System.out.println("*********");
-        if(!regimenes.add(Regimen.IEPS)){
-            System.out.println("Ingresaste IEPS");
-        }
-        else if(!regimenes.add(Regimen.CEDULAR)){
-            System.out.println("Ingresaste CEDULAR");
-        }
-        else if(!regimenes.add(Regimen.HOSPEDAJE)){
-            System.out.println("Ingresaste HOSPEDAJE");
-        }
-        else if(!regimenes.add(Regimen.INCORPORACIONFISCAL)){
-            System.out.println("Ingresaste Incorporacion fiscal");
-        }
-        else if(!regimenes.add(Regimen.INTERMEDIO)){
-            System.out.println("Ingresaste intermedio");
-        }else{
-            System.out.println("No ingresaste ninguno");
-            System.out.println(RFCException.class);
-        }
         
-        System.out.println("*********");
-
         
-        System.out.println("******************");
-                
-           
     }
 }

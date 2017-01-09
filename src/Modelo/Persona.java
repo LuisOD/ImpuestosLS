@@ -12,16 +12,13 @@ import objetos.Regimen;
  */
 public abstract class Persona {
     
+    
     private RFC rfc;
     private HashSet<Direciones> direccion;
     private String telefono;
     private Fecha fechaInscripcion;
     private Fecha fechaOperaciones;
-    private Regimen regimen;
+    private HashSet<Regimen> regimen;
     
-    
-    
-
-
     
 }
