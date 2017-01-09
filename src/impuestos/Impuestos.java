@@ -1,6 +1,7 @@
 
 package impuestos;
 import Excepciones.DireccionException;
+import Excepciones.RFCException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import Modelo.Direciones;
@@ -66,13 +67,36 @@ public class Impuestos {
         
         System.out.println("****************");//Regimen
         HashSet<Regimen> regimenes = new HashSet<>();
-        regimenes.add(Regimen.IEPS);
-        regimenes.add(Regimen.HOSPEDAJE);
-        regimenes.add(Regimen.INCORPORACIONFISCAL);
+        //regimenes.add(Regimen.IEPS);
+        //regimenes.add(Regimen.HOSPEDAJE);
+        //regimenes.add(Regimen.INCORPORACIONFISCAL);
         
         for (Regimen regimen : regimenes) {//impresion de regimenes
             System.out.println(regimen);            
         }
+        System.out.println("*********");
+        if(!regimenes.add(Regimen.IEPS)){
+            System.out.println("Ingresaste IEPS");
+        }
+        else if(!regimenes.add(Regimen.CEDULAR)){
+            System.out.println("Ingresaste CEDULAR");
+        }
+        else if(!regimenes.add(Regimen.HOSPEDAJE)){
+            System.out.println("Ingresaste HOSPEDAJE");
+        }
+        else if(!regimenes.add(Regimen.INCORPORACIONFISCAL)){
+            System.out.println("Ingresaste Incorporacion fiscal");
+        }
+        else if(!regimenes.add(Regimen.INTERMEDIO)){
+            System.out.println("Ingresaste intermedio");
+        }else{
+            System.out.println("No ingresaste ninguno");
+            System.out.println(RFCException.class);
+        }
+        
+        System.out.println("*********");
+
+        
         System.out.println("******************");
                 
            

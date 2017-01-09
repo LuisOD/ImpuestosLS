@@ -40,11 +40,26 @@ public class RFC {
         hash = 71 * hash + Objects.hashCode(this.rfc);
         return hash;
     }
-    //comparacion de fecha
-    //public int compareTo(RFC rfcita){
-     //  boolean igual;
-        //if(rfc!=rfcita){
-            
-        //}
-      
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RFC other = (RFC) obj;
+        if (!Objects.equals(this.rfc, other.rfc)) {
+            return false;
+        }
+        if (this.tipo != other.tipo) {
+            return false;
+        }
+        return true;
+    }
+     
 }
