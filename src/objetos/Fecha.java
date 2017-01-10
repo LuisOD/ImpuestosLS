@@ -196,6 +196,19 @@ public class Fecha implements Comparable<Fecha>{
         return String.format("%02d/%02d/%02d",dia,mes,anio);//if
         //System.out.println(strDays[now.get(Calendar.DAY_OF_WEEK)-1];/
     }
+    // años
+    public Integer diferenciaAnios(){
+        Fecha fp = new Fecha();
+        int anios = fechaActual.getAnio() - this.getAnio();
+        if (this.getMes()> fechaActual.getMes()){
+        anios--;
+        }if else((fechaActual.getMes=this.getMes()&&(fechaActual.getDia > this.getDia)){//lo mimso pero en dias
+        anios--;
+     }
+        
+    }
+    
+    
     //dia inhabil
     public static void agregarDiaInhabil(Fecha f){
         diasinhabil.add(f);

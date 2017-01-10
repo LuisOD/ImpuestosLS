@@ -17,13 +17,43 @@ public class Fisica extends Persona{
     private String matern;
     private Fecha fechaNacimiento;
 
-    public Fisica(String nom, String pat, String mat, Fecha fechaNac, RFC rfc, HashSet<Direciones> dir, String tel, Fecha fechaInsc, Fecha fechaOper, HashSet<Regimen> reg) {
-        super(rfc, dir, tel, fechaInsc, fechaOper, reg);
-        this.nombre = nom;
-        this.paterno = pat;
-        this.matern = mat;
-        this.fechaNacimiento = fechaNac;
+    public boolean isValido(){
+        return fechaNacimiento.diferenciaAnios() >= 18;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPaterno() {
+        return paterno;
+    }
+
+    public void setPaterno(String paterno) {
+        this.paterno = paterno;
+    }
+
+    public String getMatern() {
+        return matern;
+    }
+
+    public void setMatern(String matern) {
+        this.matern = matern;
+    }
+
+    public Fecha getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Fecha fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+  
   
     public void valida() throws FisicaException{
         //int fisAux = 0;
