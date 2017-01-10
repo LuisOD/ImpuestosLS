@@ -56,6 +56,7 @@ public class Impuestos {
         
         System.out.println("*********");
         //HashSet<RFC> r = new HashSet<>(); probar 
+        
                 
         System.out.println("*****");
         
@@ -73,7 +74,7 @@ public class Impuestos {
             System.out.print(regimen.getNumerito());            
             System.out.println(" "+regimen);
         }
-        System.out.println("*********");
+        System.out.println("**************************");
         
         
     }

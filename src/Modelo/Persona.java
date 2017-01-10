@@ -19,6 +19,17 @@ public abstract class Persona {
     private Fecha fechaInscripcion;
     private Fecha fechaOperaciones;
     private HashSet<Regimen> regimen;
+
+    public Persona(RFC rfc, HashSet<Direciones> dir, String tel, Fecha fechaInsc, Fecha fechaOper, HashSet<Regimen> reg) {
+        this.rfc = rfc;
+        this.direccion = dir;
+        this.telefono = tel;
+        this.fechaInscripcion = fechaInsc;
+        this.fechaOperaciones = fechaOper;
+        this.regimen = reg;
+    }
+   
+    
     
     
 }
