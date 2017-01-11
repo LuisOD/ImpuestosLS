@@ -75,12 +75,7 @@ public class Impuestos {
             System.out.println(" "+regimen);
         }
         System.out.println("**************************");
-        
-        
         Fecha fc = new Fecha();
-        
-        System.out.println(fc);
-       
         
         
     }

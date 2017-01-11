@@ -199,16 +199,14 @@ public class Fecha implements Comparable<Fecha>{
     // años
     public Integer diferenciaAnios(){
         Fecha fp = new Fecha();
-        int anios = fechaActual.getAnio() - this.getAnio();
-        if (this.getMes()> fechaActual.getMes()){
-        anios--;
-        }if else((fechaActual.getMes=this.getMes()&&(fechaActual.getDia > this.getDia)){//lo mimso pero en dias
-        anios--;
-     }
-        
+        int anios = fp.getAnio() - this.getAnio();
+        if (this.getMes()> fp.getMes()){
+            anios--;
+        }else if((fp.getMes() == this.getMes())&&(fp.getDia() < this.getDia())){//lo mimso pero en dias
+            anios--;
+        }
+        return anios;
     }
-    
-    
     //dia inhabil
     public static void agregarDiaInhabil(Fecha f){
         diasinhabil.add(f);

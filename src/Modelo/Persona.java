@@ -1,10 +1,13 @@
 
 package Modelo;
 
+import Excepciones.IntervalosfechaException;
 import java.util.HashSet;
 import objetos.Fecha;
+import objetos.HashConjunto;
 import objetos.RFC;
 import objetos.Regimen;
+import objetos.TipodeDireccion;
 
 /**
  *
@@ -18,30 +21,47 @@ public abstract class Persona {
     private String telefono;
     private Fecha fechaInscripcion;
     private Fecha fechaOperaciones;
-    private HashSet<Regimen> regimen;
+    private HashConjunto regimenes;
 
-    public Persona(RFC rfc, HashSet<Direciones> dir, String tel, Fecha fechaInsc, Fecha fechaOper, HashSet<Regimen> reg) {
+    public Persona(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones) throws IntervalosfechaException{
         this.rfc = rfc;
-        this.direccion = dir;
-        this.telefono = tel;
-        this.fechaInscripcion = fechaInsc;
-        this.fechaOperaciones = fechaOper;
-        this.regimen = reg;
+        this.telefono = telefono;
+        this.fechaInscripcion = fechaInscripcion;
+        this.fechaOperaciones = fechaOperaciones;
+        
+        if(isValida()){
+            throw new IntervalosfechaException();
+        }
+    }
+         
+    public boolean isValida(){
+        return.fechaInscripcion.compareTo(fechaInscripcion <= 0);
+    }
+    
+    public boolean addDireciones(Direciones dir){
+        return Direciones.add(dir);
+    }
+    public boolean isDireccion(TipodeDireccion td){
+        return direciones.Stream().filter(obj -> obj.getTipo() == td).count()>0;
+    }
+    public Direcion getDireccion(TipodeDireccion td){
+        Direccion direccionRetorno = null;
+        for(Direccion direncioncita : direciones){
+            if(direcioncita.getTipo()==td){
+                direcionRetorno = direcioncita;
+            }
+        }
+        return direccionRetorno;
+    }
+    public List<Direcion> getDireciones(){
         
     }
-    public boolean addDireccion(Direccion dir){
-        return direciones.add(dir);
+    public void addRegimen(Regimen rgm) throws RegimenException{
+        if(!Regimenes.add(rgm)){
+            throw new RegimenException;
+        }
     }
-    public boolean isDireccion(TipoDireccion td){
-        return false;
-    }
-    public Direccion getDireccion(TipoDireccion td){
-        return null;        
-    }
-    public List<Direccion> getDireccion(){
-        
-    }
-
+    
     public RFC getRfc() {
         return rfc;
     }
@@ -70,8 +90,13 @@ public abstract class Persona {
         return fechaInscripcion;
     }
 
-    public void setFechaInscripcion(Fecha fechaInscripcion) {
+    public void setFechaInscripcion(Fecha fechaInscripcion) throws IntervalosfechaException{        
+        Fecha aux= this.fechaInscripcion;
         this.fechaInscripcion = fechaInscripcion;
+        if(!isValida()){
+            this.fechaInscripcion = aux;
+            throw new IntervalosfechaException();
+        }
     }
 
     public Fecha getFechaOperaciones() {
@@ -81,16 +106,6 @@ public abstract class Persona {
     public void setFechaOperaciones(Fecha fechaOperaciones) {
         this.fechaOperaciones = fechaOperaciones;
     }
-
-    public HashSet<Regimen> getRegimen() {
-        return regimen;
-    }
-
-    public void setRegimen(HashSet<Regimen> regimen) {
-        this.regimen = regimen;
-    }
-   
-    
     
     
 }

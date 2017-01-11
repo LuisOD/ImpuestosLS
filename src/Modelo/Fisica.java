@@ -2,13 +2,14 @@
 package Modelo;
 
 import Excepciones.FisicaException;
+import Excepciones.IntervalosfechaException;
+import Excepciones.PersonaFisicaException;
 import java.util.HashSet;
 import objetos.Fecha;
 import objetos.RFC;
 import objetos.Regimen;
 
 /**
- *
  * @author Luis_Od
  */
 public class Fisica extends Persona{
@@ -17,17 +18,19 @@ public class Fisica extends Persona{
     private String matern;
     private Fecha fechaNacimiento;
 
-    public Fisica(String nombre, String paterno, String matern, Fecha fechaNacimiento, RFC rfc, HashSet<Direciones> dir, String tel, Fecha fechaInsc, Fecha fechaOper, HashSet<Regimen> reg) {
-        super(rfc, dir, tel, fechaInsc, fechaOper, reg);
+    public Fisica(String nombre, String paterno, String matern, Fecha fechaNacimiento, RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones) throws IntervalosfechaException, PersonaFisicaException {
+        super(rfc, telefono, fechaInscripcion, fechaOperaciones);
         this.nombre = nombre;
         this.paterno = paterno;
         this.matern = matern;
         this.fechaNacimiento = fechaNacimiento;
+        if(!isValido()){
+            throw new PersonaFisicaException();
+        }
     }
-
-    
     public boolean isValido(){
-        return fechaNacimiento.diferenciaAnios() >= 18;
+        boolean resultado = super.isValida();
+        return resultado && fechaNacimiento.diferenciaAnios() >= 18;
     }
 
     public String getNombre() {

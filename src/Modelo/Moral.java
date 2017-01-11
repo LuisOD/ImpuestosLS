@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import Excepciones.IntervalosfechaException;
 import java.util.HashSet;
 import objetos.Fecha;
 import objetos.RFC;
@@ -15,13 +16,15 @@ public class Moral extends Persona{
     private Fisica representanteLegal;
     private Fecha fechaCreacion;
 
-    public Moral(String razonSocial, String tipoSociedad, Fisica representanteLegal, Fecha fechaCreacion, RFC rfc, HashSet<Direciones> dir, String tel, Fecha fechaInsc, Fecha fechaOper, HashSet<Regimen> reg) {
-        super(rfc, dir, tel, fechaInsc, fechaOper, reg);
+    public Moral(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones, String razonSocial, String tipoSociedad, Fisica representanteLegal, Fecha fechaCreacion) throws IntervalosfechaException {
+        super(rfc, telefono, fechaInscripcion, fechaOperaciones);
         this.razonSocial = razonSocial;
         this.tipoSociedad = tipoSociedad;
         this.representanteLegal = representanteLegal;
         this.fechaCreacion = fechaCreacion;
     }
+
+    
     
     
     
