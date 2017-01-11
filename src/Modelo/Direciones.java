@@ -9,6 +9,7 @@ import objetos.TipodeDireccion;
  * @author Luis_Od
  */
 public class Direciones {
+
     private TipodeDireccion tipo;
     private String calle;
     private String noExterior;

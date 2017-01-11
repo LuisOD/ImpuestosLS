@@ -7,7 +7,6 @@ import objetos.RFC;
 import objetos.Regimen;
 
 /**
- *
  * @author Luis_Od
  */
 public class Moral extends Persona{

@@ -17,6 +17,15 @@ public class Fisica extends Persona{
     private String matern;
     private Fecha fechaNacimiento;
 
+    public Fisica(String nombre, String paterno, String matern, Fecha fechaNacimiento, RFC rfc, HashSet<Direciones> dir, String tel, Fecha fechaInsc, Fecha fechaOper, HashSet<Regimen> reg) {
+        super(rfc, dir, tel, fechaInsc, fechaOper, reg);
+        this.nombre = nombre;
+        this.paterno = paterno;
+        this.matern = matern;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    
     public boolean isValido(){
         return fechaNacimiento.diferenciaAnios() >= 18;
     }
