@@ -2,19 +2,20 @@
 package Modelo;
 
 import Excepciones.IntervalosfechaException;
+import Excepciones.RegimenException;
 import java.util.HashSet;
 import objetos.Fecha;
 import objetos.HashConjunto;
 import objetos.RFC;
 import objetos.Regimen;
 import objetos.TipodeDireccion;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- *
  * @author Luis_Od
  */
 public abstract class Persona {
-    
     
     private RFC rfc;
     private HashSet<Direciones> direccion;
@@ -29,36 +30,37 @@ public abstract class Persona {
         this.fechaInscripcion = fechaInscripcion;
         this.fechaOperaciones = fechaOperaciones;
         
-        if(isValida()){
+        if(isValido()){
             throw new IntervalosfechaException();
         }
     }
          
-    public boolean isValida(){
-        return.fechaInscripcion.compareTo(fechaInscripcion <= 0);
+    public boolean isValido(){
+        return fechaInscripcion.compareTo(fechaInscripcion)<= 0;
     }
     
-    public boolean addDireciones(Direciones dir){
-        return Direciones.add(dir);
+    public boolean addDireccion(Direciones dir){
+        return direccion.add(dir);
     }
     public boolean isDireccion(TipodeDireccion td){
-        return direciones.Stream().filter(obj -> obj.getTipo() == td).count()>0;
+        return direccion.stream().filter(obj -> obj.getTipo() == td).count()>0;
     }
-    public Direcion getDireccion(TipodeDireccion td){
-        Direccion direccionRetorno = null;
-        for(Direccion direncioncita : direciones){
-            if(direcioncita.getTipo()==td){
-                direcionRetorno = direcioncita;
+    public Direciones getDireccion(TipodeDireccion td){
+        Direciones direccionRetorno = null;
+        for(Direciones direccioncita : direccion){
+            if(direccioncita.getTipo()==td){
+                direccionRetorno = direccioncita;
             }
         }
         return direccionRetorno;
     }
-    public List<Direcion> getDireciones(){
-        
+    public List<Direciones> getDireciones(){
+        return new ArrayList<>(direccion);
     }
+    
     public void addRegimen(Regimen rgm) throws RegimenException{
-        if(!Regimenes.add(rgm)){
-            throw new RegimenException;
+        if(!regimenes.add(rgm)){
+            throw new RegimenException();
         }
     }
     
@@ -93,7 +95,7 @@ public abstract class Persona {
     public void setFechaInscripcion(Fecha fechaInscripcion) throws IntervalosfechaException{        
         Fecha aux= this.fechaInscripcion;
         this.fechaInscripcion = fechaInscripcion;
-        if(!isValida()){
+        if(!isValido()){
             this.fechaInscripcion = aux;
             throw new IntervalosfechaException();
         }

@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Luis_Od/Documents/NetBeansProjects/Impuestos/ImpuestosLS/src/Modelo/Direciones.java</file>
+            <file>file:/C:/Users/Luis_Od/Documents/NetBeansProjects/Impuestos/ImpuestosLS/src/Modelo/Moral.java</file>
+            <file>file:/C:/Users/Luis_Od/Documents/NetBeansProjects/Impuestos/ImpuestosLS/src/Modelo/Fisica.java</file>
+            <file>file:/C:/Users/Luis_Od/Documents/NetBeansProjects/Impuestos/ImpuestosLS/src/Modelo/Persona.java</file>
+            <file>file:/C:/Users/Luis_Od/Documents/NetBeansProjects/Impuestos/ImpuestosLS/src/objetos/Regimen.java</file>
             <file>file:/C:/Users/Luis_Od/Documents/NetBeansProjects/Impuestos/ImpuestosLS/src/impuestos/Impuestos.java</file>
-            <file>file:/C:/Users/Luis_Od/Documents/NetBeansProjects/Impuestos/ImpuestosLS/src/objetos/RFC.java</file>
+            <file>file:/C:/Users/Luis_Od/Documents/NetBeansProjects/Impuestos/ImpuestosLS/src/objetos/Fecha.java</file>
         </group>
     </open-files>
 </project-private>
