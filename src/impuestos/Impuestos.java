@@ -91,9 +91,10 @@ public class Impuestos {
         arreglo.add(new Cedular());
         
         for (int i = 0; i < arreglo.size(); i++) {
-            //Obligacion obj = arreglo.get(i);
-            //obj.metodoPrueba();
+            Obligacion obj = arreglo.get(i);
+            obj.metodoPrueba();
             arreglo.get(i).metodoPrueba();
+            
         }
         
         

@@ -54,7 +54,7 @@ public enum TipoPeriodo {
     
     public static TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
         TipoPeriodo resul = null;
-        TipoPeriodo tp[] = new TipoPeriodo.values();
+        TipoPeriodo tp[] = new TipoPeriodo.values[];
         
     }
         
