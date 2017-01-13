@@ -56,7 +56,10 @@ public enum TipoPeriodo {
         TipoPeriodo resultado = null;
         TipoPeriodo tp[] = TipoPeriodo.values();
         for(TipoPeriodo tipoperiodo : tp){
-            System.out.println(tipoperiodo);
+           // if(){
+                
+            //}
+            //System.out.println(tipoperiodo);
         }
         return resultado;
     }

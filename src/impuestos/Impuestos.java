@@ -10,6 +10,7 @@ import Modelo.obligaciones.Ieps;
 import Modelo.obligaciones.Incorporacion;
 import Modelo.obligaciones.Obligacion;
 import objetos.Fecha;
+import objetos.Periodicidad;
 import objetos.RFC;
 import objetos.Regimen;
 import objetos.TipoPeriodo;
@@ -99,9 +100,8 @@ public class Impuestos {
         }
         System.out.println("*************");//Validacion de periodo
         Fecha dsd = new Fecha(12,12,2012);
-        TipoPeriodo tp[] = TipoPeriodo.values(new Fecha(12,12,2017));
-        System.out.println(tp);
-        
+        //TipoPeriodo tp[] = TipoPeriodo.values(new Fecha(12,12,2017));
+        TipoPeriodo tp[] = new TipoPeriodo(tp.getMes(Periodicidad.MENSUAL,new Fecha(12,12,2012)));
         
         
     }

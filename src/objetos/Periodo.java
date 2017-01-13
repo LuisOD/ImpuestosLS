@@ -18,6 +18,7 @@ public class Periodo extends Fecha{
     public int compareTo(Fecha fechalmt){
        Fecha flm = new Fecha();
        int mesplus= flm.getMes()+1;
+       Integer diaplus=flm.getDia()+16;
        if(flm.getMes()==1){
            mesplus++;
            System.out.println("mensual");
@@ -29,7 +30,7 @@ public class Periodo extends Fecha{
                    System.out.println("trimestral");
                }
            }
-           this.fechalmlpago= super.getDia(16);
+           flm.aumentar(16);
        }else if(flm.getMes()==2){
            mesplus++;
            System.out.println("mensual");
@@ -37,7 +38,7 @@ public class Periodo extends Fecha{
                mesplus++;
                System.out.println("trimestral");
            }
-           this.fechalmlpago= super.getDia(16);
+           flm.aumentar(16);
        }else if(flm.getMes()==3){
            mesplus++;
            System.out.println("mensual");
@@ -45,14 +46,24 @@ public class Periodo extends Fecha{
                mesplus++;
                System.out.println("bimestral");
             }
-           this.fechalmlpago= super.getDia(16);
+           flm.aumentar(16);
        }else if(flm.getMes()==4){
            mesplus++;
            System.out.println("mesual");
-           if(flm.getMes()>=3&&flm.getMes()<=4){
-               
+           if(flm.getMes()>=5&&flm.getMes()<=6){
+               mesplus++;
+               System.out.println("bimestral");
            }
-           this.fechalmlpago= super.getDia(16);
+           //this.fechalmlpago= super.getDia(16);
+           flm.aumentar(16);
+       }else if(flm.getMes()==5){
+           mesplus++;
+           System.out.println("mensual");
+           if(flm.getMes()>=5&&flm.getMes()<=6){
+               mesplus++;
+               System.out.println("bimestral");
+            }
+           flm.aumentar(16);
        }
        
         
