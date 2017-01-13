@@ -27,8 +27,7 @@ public enum TipoPeriodo {
     ABR_MAY_JUN(Periodicidad.TRIMESTRAL,4,6),
     JUL_AGO_SEP(Periodicidad.TRIMESTRAL,7,9),
     OCT_NOV_DIC(Periodicidad.TRIMESTRAL,10,12);
-    
-    
+
     private Periodicidad periodicidad;
     private Integer mesInicio;
     private Integer mesFinal;

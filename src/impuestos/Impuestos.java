@@ -97,9 +97,10 @@ public class Impuestos {
             arreglo.get(i).metodoPrueba();
             
         }
-        
-        TipoPeriodo es= new TipoPeriodo.values(Fecha f = new Fecha(12,12,2016));
-                
+        System.out.println("*************");//Validacion de periodo
+        Fecha dsd = new Fecha(12,12,2012);
+        TipoPeriodo tp[] = TipoPeriodo.values(new Fecha(12,12,2017));
+        System.out.println(tp);
         
         
         
