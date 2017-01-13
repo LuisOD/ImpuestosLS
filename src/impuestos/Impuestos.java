@@ -12,6 +12,7 @@ import Modelo.obligaciones.Obligacion;
 import objetos.Fecha;
 import objetos.RFC;
 import objetos.Regimen;
+import objetos.TipoPeriodo;
 import objetos.TipodeDireccion;
 import objetos.TipodePersona;
 /**
@@ -96,6 +97,9 @@ public class Impuestos {
             arreglo.get(i).metodoPrueba();
             
         }
+        
+        TipoPeriodo es= new TipoPeriodo.values(Fecha f = new Fecha(12,12,2016));
+                
         
         
         

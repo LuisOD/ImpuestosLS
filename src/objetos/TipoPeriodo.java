@@ -1,5 +1,6 @@
 
 package objetos;
+import objetos.Fecha;
 /**
  * @author Luis_Od
  */
@@ -52,10 +53,13 @@ public enum TipoPeriodo {
     }
     
     
-    public static TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
-        TipoPeriodo resul = null;
-        TipoPeriodo tp[] = new TipoPeriodo.values[];
-        
+    public  TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
+        TipoPeriodo resultado = null;
+        TipoPeriodo tp[] = TipoPeriodo.values();
+        for(TipoPeriodo tipoperiodo : tp){
+            System.out.println(tipoperiodo);
+        }
+        return resultado;
     }
         
 }

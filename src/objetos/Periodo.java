@@ -15,11 +15,9 @@ public class Periodo {
         tipoPeriodo = tp;
     }
     //calcular fecha limite y asignar
-    public int compareTo(Fecha fechalmt){
-        Fecha flm = new Fecha();
+    //public int compareTo(Fecha fechalmt){
+      //  Fecha flm = new Fecha();
         
-        if(this.tipoPeriodo>=){
-            
-        }
-    }
+        
+    //}
 }
