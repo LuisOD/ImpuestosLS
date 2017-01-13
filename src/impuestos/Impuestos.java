@@ -5,6 +5,10 @@ import Excepciones.RFCException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import Modelo.Direciones;
+import Modelo.obligaciones.Cedular;
+import Modelo.obligaciones.Ieps;
+import Modelo.obligaciones.Incorporacion;
+import Modelo.obligaciones.Obligacion;
 import objetos.Fecha;
 import objetos.RFC;
 import objetos.Regimen;
@@ -76,6 +80,22 @@ public class Impuestos {
         }
         System.out.println("**************************");
         Fecha fc = new Fecha();
+        System.out.println("*********+");
+        
+        
+        ArrayList<Obligacion> arreglo = new ArrayList<>();
+        Obligacion ob = new Cedular();
+        arreglo.add(ob);
+        arreglo.add(new Ieps());
+        arreglo.add(new Incorporacion());        
+        arreglo.add(new Cedular());
+        
+        for (int i = 0; i < arreglo.size(); i++) {
+            //Obligacion obj = arreglo.get(i);
+            //obj.metodoPrueba();
+            arreglo.get(i).metodoPrueba();
+        }
+        
         
         
     }
