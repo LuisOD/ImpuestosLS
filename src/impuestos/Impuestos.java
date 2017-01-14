@@ -11,6 +11,7 @@ import Modelo.obligaciones.Incorporacion;
 import Modelo.obligaciones.Obligacion;
 import objetos.Fecha;
 import objetos.Periodicidad;
+import objetos.Periodo;
 import objetos.RFC;
 import objetos.Regimen;
 import objetos.TipoPeriodo;
@@ -50,6 +51,7 @@ public class Impuestos {
         ArrayList<Fecha> fechaInhabil = new ArrayList<Fecha>();
         fechaInhabil.add(new Fecha(1,1,2017));
         fechaInhabil.add(new Fecha(24,2,2017));
+        fechaInhabil.add(new Fecha(17,4,2017));
         
         for (Fecha fechaInhabile : fechaInhabil) {
             System.out.println(fechaInhabile);    
@@ -99,10 +101,21 @@ public class Impuestos {
             
         }
         System.out.println("*************");//Validacion de periodo
-        Fecha dsd = new Fecha(12,12,2012);
+        //Fecha dsd = new Fecha(12,12,2012);
         //TipoPeriodo tp[] = TipoPeriodo.values(new Fecha(12,12,2017));
-        TipoPeriodo tp[] = new TipoPeriodo(tp.getMes(Periodicidad.MENSUAL,new Fecha(12,12,2012)));
+        TipoPeriodo tp =TipoPeriodo.getPeriodo(Periodicidad.MENSUAL,new Fecha(12,12,2012));
+        System.out.println(tp);
         
+        System.out.println("*****");
+        
+        Periodo p = new Periodo(TipoPeriodo.ABR_MAY_JUN);
+        
+        System.out.println(p.fechaLimite(4));
+        
+        System.out.println("*******++");
+        
+        Cedular c = new Cedular();
+        System.out.println(c);
         
     }
 }

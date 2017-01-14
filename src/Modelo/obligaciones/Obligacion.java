@@ -6,7 +6,10 @@ package Modelo.obligaciones;
  */
 public interface Obligacion { //resuelve la herencia multiple
     
-    public void metodoPrueba();
+    public float calculaImpuesto();
+    public float calculaRecargos();
+    public float totalPagar();
+    
     
     
 }
