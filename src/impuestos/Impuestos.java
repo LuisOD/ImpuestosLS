@@ -66,19 +66,17 @@ public class Impuestos {
         //HashSet<RFC> r = new HashSet<>(); probar 
         Fecha fcIn = new Fecha(2,4,2015);
         Fecha fcOp = new Fecha(10,4,2015);
-        RFC refn = new RFC("rfca");
+        RFC reFc = new RFC("lool900202asl",TipodePersona.Fisica);
         System.out.println(fcIn);
         System.out.println(fcOp);
-        //System.out.println(refn);
-        //Fisica pf = new Fisica("Luis", "Lopez", "Ojeda",f,refn, "9512267834", fcIn, fcOp);
-        
-        System.out.println();
-                
-                
+        System.out.println(reFc);
+        //Fisica pf = new Fisica("Luis", "Lopez", "Ojeda",f,reFc, "9512267834", fcIn,fcOp);
+        //Fisica pf = new Fisica();
+        System.out.println();     
         System.out.println("*****");
         
         Direciones dir = new Direciones(TipodeDireccion.FISICA,"call21e", "323", "23432", "colonia", "68000", "municipio");
-      
+        System.out.println(dir);
         System.out.println("****************");//Regimen
         HashSet<Regimen> regimenes = new HashSet<>();
         regimenes.add(Regimen.IEPS);
@@ -92,22 +90,20 @@ public class Impuestos {
             System.out.println(" "+regimen);
         }
         System.out.println("**************************");
-        System.out.println("*********+");
         
+        ArrayList<Obligacion> arreglo = new ArrayList<>();
+        Obligacion ob = new Cedular();
+        arreglo.add(ob);
+        arreglo.add(new Ieps());
+        arreglo.add(new Incorporacion());        
+        arreglo.add(new Cedular());
         
-//        ArrayList<Obligacion> arreglo = new ArrayList<>();
-//        Obligacion ob = new Cedular();
-//        arreglo.add(ob);
-//        arreglo.add(new Ieps());
-//        arreglo.add(new Incorporacion());        
-//        arreglo.add(new Cedular());
-        
-//        for (int i = 0; i < arreglo.size(); i++) {
-//            Obligacion obj = arreglo.get(i);
-//            obj.metodoPrueba();
-//            arreglo.get(i).metodoPrueba();
-//            
-//        }
+        for (int i = 0; i < arreglo.size(); i++) {
+            Obligacion obj = arreglo.get(i);
+            obj.metodoPrueba();
+            arreglo.get(i).metodoPrueba();
+            
+        }
         System.out.println("*************");//Validacion de periodo
         //Fecha dsd = new Fecha(12,12,2012);
         //TipoPeriodo tp[] = TipoPeriodo.values(new Fecha(12,12,2017));

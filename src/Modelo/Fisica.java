@@ -18,7 +18,7 @@ public class Fisica extends Persona{
     private String matern;
     private Fecha fechaNacimiento;
 
-    public Fisica(String nombre, String paterno, String matern, Fecha fechaNacimiento, RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones) throws IntervalosfechaException, PersonaFisicaException {
+    public Fisica(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones, String nombre, String paterno, String matern, Fecha fechaNacimiento) throws IntervalosfechaException, PersonaFisicaException {
         super(rfc, telefono, fechaInscripcion, fechaOperaciones);
         this.nombre = nombre;
         this.paterno = paterno;
