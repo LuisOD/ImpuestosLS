@@ -14,8 +14,8 @@ public class Fecha implements Comparable<Fecha>{
     private Integer mes;
     private Integer anio;
     
-    private static HashSet<Fecha> diasinhabil = new HashSet<Fecha>();
-    
+    private static HashSet<Fecha> diasinhabil = new HashSet<>();
+    //private static HashSet<Fecha> diasinhabil = new HashSet<Fecha>();
     public Fecha(Integer dia,Integer mes,Integer anio){
         this.dia = dia;
         this.mes = mes;
@@ -29,100 +29,29 @@ public class Fecha implements Comparable<Fecha>{
     }
 //Fecha valida de 1900 a 2100
     public boolean fechaValida(){
-        int diaAux=0;
+        //int diaAux=0;
         if((anio>=1900)&&(anio<=2100)){
             if((mes>=1)&&(mes<=12)){
-                switch(mes){
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        diaAux = 31;
-                        break;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11: 
-                        diaAux = 30;
-                        break;
-                    case 2:
-                        diaAux = anio % 4 == 0 ? 29 : 28;
-                        break;
-                }
-                if((dia>=1)&&(dia<diaAux)){
+                if((dia>=1)&&(dia<= diasdelMes())){
                     return true;
                 }
+                }
             }
-        }
         return false;
     }
     //incrementar fecha
     public void aumentar(){
-        int diaAux = 0;
         dia++;
-        switch(mes){
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        diaAux = 31;
-                        break;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11: 
-                        diaAux = 30;
-                        break;
-                    case 2:
-                        diaAux = anio % 4 == 0 ? 29 : 28;
-                        break;
-                }
-        if(dia>diaAux){
+        if(dia>diasdelMes()){
             mes++;
-            dia =1;
-        }
-        if(mes>12){
-            anio++;
-            mes =1;
+            dia=1;
+            if(mes>12){
+                mes=1;
+                anio++;
+            }
         }
     }
-    public void aumentar(Integer aum){
-        int diaAux = 0;
-        dia=dia + aum;
-        switch(mes){
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        diaAux = 31;
-                        break;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11: 
-                        diaAux = 30;
-                        break;
-                    case 2:
-                        diaAux = anio % 4 == 0 ? 29 : 28;
-                        break;
-                }
-        if(dia>diaAux){
-            dia=dia-diaAux;
-            mes++;
-        }
-        if(mes>12){
-            anio++;
-        }
-    }
+   
     //decrementar fecha
     public void decrementar(){
         int diaAux = 0;
@@ -211,28 +140,55 @@ public class Fecha implements Comparable<Fecha>{
     public static void agregarDiaInhabil(Fecha f){
         diasinhabil.add(f);
     }
-    public static boolean esDiaInhabil(Fecha f){
-        return diasinhabil.equals(f);
+    public static boolean isDiaInhabil(Fecha f){
+        return diasinhabil.contains(f);
     }
     //aumentar dia inhabil
     public void aumentarDiaInhabil(){
         do{
             aumentar();
-        }while(esDiaInhabil(this));
+        }while(isDiaInhabil(this));
     }
-    public void aumentarDiaInhabil(String ...x){ // con argumento y con tipo arreglo por el ...
+    public void aumentarDiaInhabil(DayOfWeek ...days){ // con argumento y con tipo arreglo por el ...
         boolean ban = false;
         do{
+            ban = false;
             aumentar();
-            for (int i = 0; i < x.length; i++) {
-                
+            for (int i = 0; i < days.length; i++) {
+                if(days[i]==this.diaSemana()){
+                    ban=true;
+                }
             }
-        }while(esDiaInhabil(this));
+        }while(isDiaInhabil(this)||ban);
     }    
-    //
+    private int diasdelMes(){
+        int diaAux = 0;
+        switch(mes){
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        diaAux = 31;
+                        break;
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11: 
+                        diaAux = 30;
+                        break;
+                    case 2:
+                        diaAux = anio % 4 == 0 ? 29 : 28;
+                        break;
+                }
+        return diaAux;
+    }
     //comparacion de fecha
+    @Override
     public int compareTo(Fecha fechita){
-           int resultado = this.anio - fechita.anio;
+        int resultado = this.anio - fechita.anio;
         if(resultado==0){
             resultado = this.mes -fechita.mes;
             if(resultado==0){
@@ -259,11 +215,8 @@ public class Fecha implements Comparable<Fecha>{
         hash = 71 * hash + Objects.hashCode(this.anio);
         return hash;
     }
-    public char diaSemanaa(){
-       System.out.println("El dia de hoy: " + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
-        return 0;
-    }
-    public DayOfWeek diaSemana(){
+    
+    public DayOfWeek diaSemana(){ //dia de la semana
         LocalDate dateTemporal = LocalDate.of(anio,mes,dia);
         return dateTemporal.getDayOfWeek();
     }
@@ -285,9 +238,6 @@ public class Fecha implements Comparable<Fecha>{
     public void setAnio(Integer anio){
      this.anio = anio;   
     }
-    Calendar now = Calendar.getInstance();
-    String[] strDays = new String[]{
-        "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes","Sabado"
-    };
+    
 
 }

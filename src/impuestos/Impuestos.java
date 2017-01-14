@@ -1,10 +1,12 @@
 
 package impuestos;
 import Excepciones.DireccionException;
+
 import Excepciones.RFCException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import Modelo.Direciones;
+import Modelo.Fisica;
 import Modelo.obligaciones.Cedular;
 import Modelo.obligaciones.Ieps;
 import Modelo.obligaciones.Incorporacion;
@@ -25,8 +27,8 @@ public class Impuestos {
 
     public static void main(String[] args) throws DireccionException, RFCException {
        
-        Fecha f = new Fecha(20,11,1996);
-        Fecha f1 = new Fecha(20,10,1996);
+        Fecha f = new Fecha(2,2,1990);//fecha nacimiento
+        Fecha f1 = new Fecha();
         System.out.println(f);
         System.out.println(f.diaSemana());
         System.out.println(f.fechaValida()); 
@@ -39,13 +41,11 @@ public class Impuestos {
         //System.out.println(f);
         //f.decrementar(2);
         //System.out.println(f);
-        System.out.println("*******+");
-        System.out.println(f.diaSemana());//dia de la semana
-        System.out.println(f.diaSemanaa());//dia de la semana
-              
+        System.out.println("*******");
+        System.out.println("El dia "+f.diaSemana()+" naciste");//dia de la semana              
         System.out.println(f.compareTo(f1)); //comparacion de fechas de f a f1
         System.out.println(f1.compareTo(f)); //comparacion de fechas de f1 a f
-        System.out.println(f);
+        System.out.println("tienes "+f.diferenciaAnios()+" años");//diferencia anios al dia de hoy
         System.out.println(f1);
         System.out.println("********");
         ArrayList<Fecha> fechaInhabil = new ArrayList<Fecha>();
@@ -62,9 +62,18 @@ public class Impuestos {
         fechas.add(new Fecha());      
         fechas.add(new Fecha());
         
-        System.out.println("*********");
+        System.out.println("Prueba RFC mio");
         //HashSet<RFC> r = new HashSet<>(); probar 
+        Fecha fcIn = new Fecha(2,4,2015);
+        Fecha fcOp = new Fecha(10,4,2015);
+        RFC refn = new RFC("rfca");
+        System.out.println(fcIn);
+        System.out.println(fcOp);
+        //System.out.println(refn);
+        //Fisica pf = new Fisica("Luis", "Lopez", "Ojeda",f,refn, "9512267834", fcIn, fcOp);
         
+        System.out.println();
+                
                 
         System.out.println("*****");
         
@@ -83,39 +92,38 @@ public class Impuestos {
             System.out.println(" "+regimen);
         }
         System.out.println("**************************");
-        Fecha fc = new Fecha();
         System.out.println("*********+");
         
         
-        ArrayList<Obligacion> arreglo = new ArrayList<>();
-        Obligacion ob = new Cedular();
-        arreglo.add(ob);
-        arreglo.add(new Ieps());
-        arreglo.add(new Incorporacion());        
-        arreglo.add(new Cedular());
+//        ArrayList<Obligacion> arreglo = new ArrayList<>();
+//        Obligacion ob = new Cedular();
+//        arreglo.add(ob);
+//        arreglo.add(new Ieps());
+//        arreglo.add(new Incorporacion());        
+//        arreglo.add(new Cedular());
         
-        for (int i = 0; i < arreglo.size(); i++) {
-            Obligacion obj = arreglo.get(i);
-            obj.metodoPrueba();
-            arreglo.get(i).metodoPrueba();
-            
-        }
+//        for (int i = 0; i < arreglo.size(); i++) {
+//            Obligacion obj = arreglo.get(i);
+//            obj.metodoPrueba();
+//            arreglo.get(i).metodoPrueba();
+//            
+//        }
         System.out.println("*************");//Validacion de periodo
         //Fecha dsd = new Fecha(12,12,2012);
         //TipoPeriodo tp[] = TipoPeriodo.values(new Fecha(12,12,2017));
         TipoPeriodo tp =TipoPeriodo.getPeriodo(Periodicidad.MENSUAL,new Fecha(12,12,2012));
-        System.out.println(tp);
+        System.out.println("el resultado es: " +tp);
         
-        System.out.println("*****");
-        
-        Periodo p = new Periodo(TipoPeriodo.ABR_MAY_JUN);
-        
-        System.out.println(p.fechaLimite(4));
-        
-        System.out.println("*******++");
-        
-        Cedular c = new Cedular();
-        System.out.println(c);
+//        System.out.println("*****");
+//        
+//        Periodo p = new Periodo(TipoPeriodo.ABR_MAY_JUN);
+//        
+//        System.out.println(p.fechaLimite(4));
+//        
+//        System.out.println("*******++");
+//        
+//        Cedular c = new Cedular();
+//        System.out.println(c);
         
     }
 }

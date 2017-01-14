@@ -19,22 +19,26 @@ public class RFC {
         }
         
     }
-    private boolean valida(){
+
+      private boolean valida(){
         if(tipo == TipodePersona.Fisica){
-            return rfc.matches("/^([A-Z,Ñ,&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\\d]{3})$/");
+            return rfc.matches("^[A-Z]{4}(\\d{6})((\\D|\\d){3})?$");
         }
         else{
-            return rfc.matches("/^([A-Z,Ñ,&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\\d]{3})$/");
+            return rfc.matches("^[A-Z]{4}(\\d{6})((\\D|\\d){3})?$");
         }
     }
-    
-
+  
     //igualar rfc hashCode
+//    @Override
+//    public int hashCode(){
+//        int hash =7;
+//        hash = 71 * hash + Objects.hashCode(this.rfc);
+//        return hash;
+//    }
     @Override
-    public int hashCode(){
-        int hash =7;
-        hash = 71 * hash + Objects.hashCode(this.rfc);
-        return hash;
+    public String toString(){
+        return rfc;
     }
 
    

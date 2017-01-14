@@ -18,7 +18,7 @@ public class Periodo extends Fecha{
     public Fecha fechaCero(){
         tipoPeriodo.getMesFinal();
         Fecha f=new Fecha(17,tipoPeriodo.getMesFinal()+1,2017);
-        f.aumentarDiaInhabil((DayOfWeek.SATURDAY,DayOfWeek.SUNDAY);
+        f.aumentarDiaInhabil(DayOfWeek.SATURDAY,DayOfWeek.SUNDAY);
         return f;
     }
     public Fecha fechaLimite(){//falta

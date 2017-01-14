@@ -31,9 +31,7 @@ public enum TipoPeriodo {
     private Periodicidad periodicidad;
     private Integer mesInicio;
     private Integer mesFinal;
-    private TipoPeriodo(Periodicidad periodicidad,
-        Integer mesIni,
-        Integer mesFin){
+    private TipoPeriodo(Periodicidad periodicidad,Integer mesIni,Integer mesFin){
         this.periodicidad = periodicidad;
         this.mesInicio = mesIni;
         this.mesFinal = mesFin;
@@ -50,18 +48,18 @@ public enum TipoPeriodo {
     public Integer getMesFinal() {
         return mesFinal;
     }
-    
-    
-    public  TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
+ 
+    public static TipoPeriodo getPeriodo(Periodicidad p, Fecha fechita){
         TipoPeriodo resultado = null;
         TipoPeriodo tp[] = TipoPeriodo.values();
         for(TipoPeriodo tipoperiodo : tp){
-           // if(){
-                
-            //}
+            if(tipoperiodo.getPeriodicidad()==p){
+                if(tipoperiodo.getMesInicio()<=fechita.getMes() && tipoperiodo.getMesFinal()>=fechita.getMes()){
+                    return resultado;
+                }
+            }
             //System.out.println(tipoperiodo);
         }
         return resultado;
-    }
-        
+    }        
 }
