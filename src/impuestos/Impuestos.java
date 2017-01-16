@@ -73,8 +73,8 @@ public class Impuestos {
         //Fisica pf = new Fisica("Luis", "Lopez", "Ojeda",f,reFc, "9512267834", fcIn,fcOp);
         //Fisica pf = new Fisica();
         System.out.println();     
-        System.out.println("*****");
         
+        System.out.println("Direccion ");
         Direciones dir = new Direciones(TipodeDireccion.FISICA,"call21e", "323", "23432", "colonia", "68000", "municipio");
         System.out.println(dir);
         System.out.println("****************");//Regimen
@@ -100,26 +100,26 @@ public class Impuestos {
         
         for (int i = 0; i < arreglo.size(); i++) {
             Obligacion obj = arreglo.get(i);
-            obj.metodoPrueba();
-            arreglo.get(i).metodoPrueba();
-            
+            obj.totalPagar();
+            arreglo.get(i).totalPagar();
         }
+        System.out.println("Total a pagar es : "+ob.totalPagar());
         System.out.println("*************");//Validacion de periodo
         //Fecha dsd = new Fecha(12,12,2012);
         //TipoPeriodo tp[] = TipoPeriodo.values(new Fecha(12,12,2017));
         TipoPeriodo tp =TipoPeriodo.getPeriodo(Periodicidad.MENSUAL,new Fecha(12,12,2012));
         System.out.println("el resultado es: " +tp);
         
-//        System.out.println("*****");
-//        
-//        Periodo p = new Periodo(TipoPeriodo.ABR_MAY_JUN);
-//        
-//        System.out.println(p.fechaLimite(4));
-//        
-//        System.out.println("*******++");
-//        
-//        Cedular c = new Cedular();
-//        System.out.println(c);
+        System.out.println("*****");
+        
+        Periodo p = new Periodo(TipoPeriodo.ABR_MAY_JUN);
+        
+        //System.out.println(p.fechaLimite(4));
+        
+        System.out.println("*******++");
+        
+        Cedular c = new Cedular();
+        System.out.println(c);
         
     }
 }
