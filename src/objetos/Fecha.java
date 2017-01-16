@@ -1,8 +1,6 @@
 package objetos;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Objects;
 /*

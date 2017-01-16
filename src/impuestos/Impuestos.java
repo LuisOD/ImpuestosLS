@@ -104,6 +104,7 @@ public class Impuestos {
             arreglo.get(i).totalPagar();
         }
         System.out.println("Total a pagar es : "+ob.totalPagar());
+        
         System.out.println("*************");//Validacion de periodo
         //Fecha dsd = new Fecha(12,12,2012);
         //TipoPeriodo tp[] = TipoPeriodo.values(new Fecha(12,12,2017));

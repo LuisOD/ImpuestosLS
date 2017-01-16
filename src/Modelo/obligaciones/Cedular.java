@@ -7,6 +7,7 @@ package Modelo.obligaciones;
  */
 //clase abstracta
 public class Cedular implements Obligacion{
+    private Integer habitacion;
     
     @Override
     public void metodoPrueba(){
