@@ -1,8 +1,11 @@
 
 package impuestos;
 import Excepciones.DireccionException;
+import Excepciones.IntervalosfechaException;
+import Excepciones.PersonaFisicaException;
 
 import Excepciones.RFCException;
+import Excepciones.RegimenException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import Modelo.Direciones;
@@ -11,6 +14,8 @@ import Modelo.obligaciones.Cedular;
 import Modelo.obligaciones.Ieps;
 import Modelo.obligaciones.Incorporacion;
 import Modelo.obligaciones.Obligacion;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import objetos.Fecha;
 import objetos.Periodicidad;
 import objetos.Periodo;
@@ -25,7 +30,7 @@ import objetos.TipodePersona;
  */
 public class Impuestos {
 
-    public static void main(String[] args) throws DireccionException, RFCException {
+    public static void main(String[] args) throws DireccionException, RFCException, RegimenException {
        
         Fecha f = new Fecha(2,2,1990);//fecha nacimiento
         Fecha f1 = new Fecha();
@@ -63,15 +68,24 @@ public class Impuestos {
         fechas.add(new Fecha());
         
         System.out.println("Prueba RFC mio");
-        //HashSet<RFC> r = new HashSet<>(); probar 
-        Fecha fcIn = new Fecha(2,4,2015);
+        //HashSet<RFC> fcIn = new HashSet<>();  
+        Fecha fcIn1 = new Fecha(2,4,2015);
         Fecha fcOp = new Fecha(10,4,2015);
         RFC reFc = new RFC("lool900202asl",TipodePersona.Fisica);
-        System.out.println(fcIn);
+        System.out.println(fcIn1);
         System.out.println(fcOp);
         System.out.println(reFc);
-        //Fisica pf = new Fisica("Luis", "Lopez", "Ojeda",f,reFc, "9512267834", fcIn,fcOp);
-        //Fisica pf = new Fisica();
+        
+        try {
+            Fisica pf = new Fisica(reFc, "9512267834", fcIn1,fcOp,"Luis", "Lopez", "Ojeda",fcIn1);
+            pf.addRegimen(Regimen.INCORPORACIONFISCAL);
+            
+        } catch (IntervalosfechaException ex) {
+            ex.printStackTrace();
+        } catch (PersonaFisicaException ex) {
+            ex.printStackTrace();
+        }
+        
         System.out.println();     
         
         System.out.println("Direccion ");
@@ -121,6 +135,10 @@ public class Impuestos {
         
         Cedular c = new Cedular();
         System.out.println(c);
+        System.out.println("************"); 
+        
+        TipoPeriodo tp1 =TipoPeriodo.getPeriodo(Periodicidad.MENSUAL,new Fecha(12,12,2012));
+        Periodo inicial = new Periodo(tp1,2012);
         
     }
 }

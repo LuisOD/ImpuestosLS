@@ -29,15 +29,13 @@ public abstract class Persona {
         this.telefono = telefono;
         this.fechaInscripcion = fechaInscripcion;
         this.fechaOperaciones = fechaOperaciones;
+        direccion = new HashSet<>();
+        regimenes = new HashConjunto();
         
-        if(isValido()){
-            throw new IntervalosfechaException();
-        }
     }
-         
-    public boolean isValido(){
-        return fechaInscripcion.compareTo(fechaInscripcion)<= 0;
-    }
+    private boolean isValido() {
+        return false;
+    }   
     
     public boolean addDireccion(Direciones dir){
         return direccion.add(dir);
@@ -108,6 +106,16 @@ public abstract class Persona {
     public void setFechaOperaciones(Fecha fechaOperaciones) {
         this.fechaOperaciones = fechaOperaciones;
     }
-    
+    public void actualizarObligaciones(){
+        for (Regimen regimen : regimenes) {
+            //System.out.println(regimen);
+            switch(regimen){
+                case INCORPORACIONFISCAL:
+                    
+             
+            }    
+        }
+                
+    }
     
 }

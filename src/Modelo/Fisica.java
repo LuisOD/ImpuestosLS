@@ -28,9 +28,9 @@ public class Fisica extends Persona{
             throw new PersonaFisicaException();
         }
     }
-    @Override
+    
     public boolean isValido(){
-        boolean resultado = super.isValido();
+        boolean resultado = isValido();
         return resultado && fechaNacimiento.diferenciaAnios() >= 18;
     }
 

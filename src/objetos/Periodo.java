@@ -15,6 +15,7 @@ public class Periodo extends Fecha{
         tipoPeriodo = tp;
         
     }
+
     public Fecha fechaCero(){
         tipoPeriodo.getMesFinal();
         Fecha f=new Fecha(17,tipoPeriodo.getMesFinal()+1,2017);

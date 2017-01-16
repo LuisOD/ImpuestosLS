@@ -4,12 +4,12 @@ package Modelo.obligaciones;
 /**
  * @author Luis_Od
  */
-public class Ieps implements Obligacion{
+public class Ieps extends Impuesto{
 
-    @Override
-    public void metodoPrueba(){
-        System.out.println("IEPS");
+    public Ieps() {
+        
     }
+    
      @Override
     public float calculaRecargos(){
         return (float) 2.0;

@@ -5,11 +5,10 @@ package Modelo.obligaciones;
  *
  * @author Luis_Od
  */
-public class Incorporacion implements Obligacion{
+public class Incorporacion extends Impuesto{
 
-    @Override
-    public void metodoPrueba(){
-        System.out.println("INCORPORACION");
+    public Incorporacion() {
+        
     }
     
      @Override

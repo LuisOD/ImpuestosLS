@@ -37,6 +37,16 @@ public enum TipoPeriodo {
         this.mesFinal = mesFin;
     }
 
+    public TipoPeriodo next(){
+        TipoPeriodo resultado = null;
+        TipoPeriodo tp[] = TipoPeriodo.values();
+        for(TipoPeriodo tipoperiodo : tp){
+            if(tipoperiodo.getPeriodicidad()== this.getPeriodicidad()){
+                System.out.println(tipoperiodo);
+            }    
+        }
+        return resultado;
+    }
     public Periodicidad getPeriodicidad() {
         return periodicidad;
     }
