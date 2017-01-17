@@ -3,6 +3,7 @@ package Modelo;
 
 import Excepciones.IntervalosfechaException;
 import Excepciones.RegimenException;
+import Modelo.obligaciones.Obligacion;
 import java.util.HashSet;
 import objetos.Fecha;
 import objetos.HashConjunto;
@@ -11,6 +12,9 @@ import objetos.Regimen;
 import objetos.TipodeDireccion;
 import java.util.ArrayList;
 import java.util.List;
+import objetos.Periodicidad;
+import objetos.Periodo;
+import objetos.TipoPeriodo;
 
 /**
  * @author Luis_Od
@@ -23,16 +27,18 @@ public abstract class Persona {
     private Fecha fechaInscripcion;
     private Fecha fechaOperaciones;
     private HashConjunto regimenes;
+    private ArrayList<Obligacion> obligaciones;
 
-    public Persona(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones) throws IntervalosfechaException{
+    public Persona(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones,ArrayList<Obligacion> obligaciones) throws IntervalosfechaException{
         this.rfc = rfc;
         this.telefono = telefono;
         this.fechaInscripcion = fechaInscripcion;
         this.fechaOperaciones = fechaOperaciones;
         direccion = new HashSet<>();
         regimenes = new HashConjunto();
-        
+        this.obligaciones = obligaciones;
     }
+
     private boolean isValido() {
         return false;
     }   
@@ -107,15 +113,22 @@ public abstract class Persona {
         this.fechaOperaciones = fechaOperaciones;
     }
     public void actualizarObligaciones(){
-        for (Regimen regimen : regimenes) {
-            //System.out.println(regimen);
-            switch(regimen){
-                case INCORPORACIONFISCAL:
-                    
-             
-            }    
+        Integer anio = fechaInscripcion.getAnio();
+        TipoPeriodo tp = TipoPeriodo.getPeriodo(getPeriodicidad(), fechaOperaciones);
+        
+        Periodo periodo = new Periodo(tp,anio);
+        do{
+            Obligacion obligacion = null;
+        switch(regimen){
+            case INCORPORACION:
+                break;
+            case
         }
+        //obligaciones.add(inicial);
+        }
+        
                 
     }
+    public abstract Periodicidad getPeriodicidad();
     
 }

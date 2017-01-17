@@ -1,27 +1,19 @@
 
 package Modelo.obligaciones;
 
+import objetos.Regimen;
+
 /**
  *
  * @author Luis_Od
  */
 public class Incorporacion extends Impuesto{
-
-    public Incorporacion() {
-        
+    private Ingress
+    public Incorporacion(Periodo per) {
+        super(Regimen.INCORPORACIONFISCAL,per);
+    }
+    public  Float totalPagar(){
+        if(ingresos)
     }
     
-     @Override
-    public float calculaRecargos(){
-        return (float) 2.0;
-    }  
-    @Override
-    public float calculaImpuesto(){
-        return (float) 1.0;
-    }    
-
-    @Override
-    public float totalPagar() {
-         return calculaImpuesto()+calculaRecargos();
-    }
 }

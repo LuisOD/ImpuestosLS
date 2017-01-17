@@ -2,6 +2,7 @@
 package objetos;
 
 import java.time.DayOfWeek;
+import sun.nio.cs.StreamDecoder;
 
 /**
  * @author Luis_Od
@@ -9,21 +10,39 @@ import java.time.DayOfWeek;
 public class Periodo extends Fecha{
     
     private TipoPeriodo tipoPeriodo;
+    private Integer ejercicio;
     private Fecha fechalmlpago;
     
     public Periodo(TipoPeriodo tp){
         tipoPeriodo = tp;
-        
+        this.ejercicio = ejercicio;
     }
-
+    
     public Fecha fechaCero(){
         tipoPeriodo.getMesFinal();
-        Fecha f=new Fecha(17,tipoPeriodo.getMesFinal()+1,2017);
+        Fecha f=new Fecha(17,tipoPeriodo.getMesFinal()+1,ejercicio);
         f.aumentarDiaInhabil(DayOfWeek.SATURDAY,DayOfWeek.SUNDAY);
         return f;
     }
-    public Fecha fechaLimite(){//falta
-        return null;
+    public Fecha fechaLimite( Integer diasAdicionales){//falta
+        Fecha cero = fechaCero();
+        for (int i = 0; i < diasAdicionales; i++) {
+            cero.aumentarDiaInhabil(DayOfWeek.FRIDAY,DayOfWeek.SATURDAY,DayOfWeek.SUNDAY);
+        }
+        return cero;
+    }
+    public String toString(){
+        return tipoPeriodo.toString()+" "+ejercicio;
+    }
+    public Periodo next(){
+        Integer ej = ejercicio;
+        TipoPeriodo tp = tipoPeriodo.next();
+        if (tp==null) {
+            ej++;
+            tp = TipoPeriodo.getPeriodo(this.tipoPeriodo.getPeriodicidad(), new Fecha(1,1,ej));
+        }
+        Periodo resultado = new Periodo(tp,ej);
+        return resultado;
     }
     
     //calcular fecha limite y asignar

@@ -42,7 +42,11 @@ public enum TipoPeriodo {
         TipoPeriodo tp[] = TipoPeriodo.values();
         for(TipoPeriodo tipoperiodo : tp){
             if(tipoperiodo.getPeriodicidad()== this.getPeriodicidad()){
-                System.out.println(tipoperiodo);
+                //System.out.println(tipoperiodo);
+                if(tipoperiodo.getMesInicio()==this.getMesFinal()){
+                    return tipoperiodo;
+                    
+                }
             }    
         }
         return resultado;
@@ -65,7 +69,7 @@ public enum TipoPeriodo {
         for(TipoPeriodo tipoperiodo : tp){
             if(tipoperiodo.getPeriodicidad()==p){
                 if(tipoperiodo.getMesInicio()<=fechita.getMes() && tipoperiodo.getMesFinal()>=fechita.getMes()){
-                    return resultado;
+                    return tipoperiodo;
                 }
             }
             //System.out.println(tipoperiodo);

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import Modelo.Direciones;
 import Modelo.Fisica;
+import Modelo.Moral;
 import Modelo.obligaciones.Cedular;
 import Modelo.obligaciones.Ieps;
 import Modelo.obligaciones.Incorporacion;
@@ -29,14 +30,16 @@ import objetos.TipodePersona;
  * @author Luis_Od
  */
 public class Impuestos {
-
+        Fisica fisica = null;
+        Moral moral = null;
+        Fisica juan = null;
     public static void main(String[] args) throws DireccionException, RFCException, RegimenException {
        
-        Fecha f = new Fecha(2,2,1990);//fecha nacimiento
-        Fecha f1 = new Fecha();
-        System.out.println(f);
-        System.out.println(f.diaSemana());
-        System.out.println(f.fechaValida()); 
+        Fecha fins = new Fecha(2,2,1990);//fecha nacimiento
+        //Fecha f1 = new Fecha();
+        //System.out.println(f);
+        //System.out.println(f.diaSemana());
+        //System.out.println(f.fechaValida()); 
         //aumentar fechas
         //f.aumentar();
         //System.out.println(f);
@@ -46,12 +49,12 @@ public class Impuestos {
         //System.out.println(f);
         //f.decrementar(2);
         //System.out.println(f);
-        System.out.println("*******");
-        System.out.println("El dia "+f.diaSemana()+" naciste");//dia de la semana              
-        System.out.println(f.compareTo(f1)); //comparacion de fechas de f a f1
-        System.out.println(f1.compareTo(f)); //comparacion de fechas de f1 a f
-        System.out.println("tienes "+f.diferenciaAnios()+" años");//diferencia anios al dia de hoy
-        System.out.println(f1);
+//        System.out.println("*******");
+//        System.out.println("El dia "+f.diaSemana()+" naciste");//dia de la semana              
+//        System.out.println(f.compareTo(f1)); //comparacion de fechas de f a f1
+//        System.out.println(f1.compareTo(f)); //comparacion de fechas de f1 a f
+//        System.out.println("tienes "+f.diferenciaAnios()+" años");//diferencia anios al dia de hoy
+//        System.out.println(f1);
         System.out.println("********");
         ArrayList<Fecha> fechaInhabil = new ArrayList<Fecha>();
         fechaInhabil.add(new Fecha(1,1,2017));
@@ -69,22 +72,22 @@ public class Impuestos {
         
         System.out.println("Prueba RFC mio");
         //HashSet<RFC> fcIn = new HashSet<>();  
-        Fecha fcIn1 = new Fecha(2,4,2015);
-        Fecha fcOp = new Fecha(10,4,2015);
+        Fecha fcIn1 = new Fecha(2,4,2015); //inicio de inscripcion
+        Fecha fcOp = new Fecha(10,4,2015); //inicio de operaciones
         RFC reFc = new RFC("lool900202asl",TipodePersona.Fisica);
-        System.out.println(fcIn1);
-        System.out.println(fcOp);
-        System.out.println(reFc);
-        
-        try {
-            Fisica pf = new Fisica(reFc, "9512267834", fcIn1,fcOp,"Luis", "Lopez", "Ojeda",fcIn1);
-            pf.addRegimen(Regimen.INCORPORACIONFISCAL);
-            
-        } catch (IntervalosfechaException ex) {
-            ex.printStackTrace();
-        } catch (PersonaFisicaException ex) {
-            ex.printStackTrace();
-        }
+//        System.out.println(fcIn1);
+//        System.out.println(fcOp);
+//        System.out.println(reFc);
+//        
+//        try {
+//            Fisica pf = new Fisica(reFc, "9512267834", fcIn1,fcOp,"Luis", "Lopez", "Ojeda",fcIn1);
+//            pf.addRegimen(Regimen.INCORPORACIONFISCAL);
+//            
+//        } catch (IntervalosfechaException ex) {
+//            ex.printStackTrace();
+//        } catch (PersonaFisicaException ex) {
+//            ex.printStackTrace();
+//        }
         
         System.out.println();     
         
@@ -125,9 +128,9 @@ public class Impuestos {
         TipoPeriodo tp =TipoPeriodo.getPeriodo(Periodicidad.MENSUAL,new Fecha(12,12,2012));
         System.out.println("el resultado es: " +tp);
         
-        System.out.println("*****");
+        System.out.println("*****");//intanciar persona,direcion,regimen
         
-        Periodo p = new Periodo(TipoPeriodo.ABR_MAY_JUN);
+        //Periodo p = new Periodo(TipoPeriodo.ABR_MAY_JUN);
         
         //System.out.println(p.fechaLimite(4));
         
@@ -137,8 +140,62 @@ public class Impuestos {
         System.out.println(c);
         System.out.println("************"); 
         
-        TipoPeriodo tp1 =TipoPeriodo.getPeriodo(Periodicidad.MENSUAL,new Fecha(12,12,2012));
-        Periodo inicial = new Periodo(tp1,2012);
+        
+        
+        try {
+            Fisica pf1 = new Fisica(reFc, "9512267834", fcIn1, fcOp, "Luis", "Lopez", "Ojeda", fins);
+            Moral pas = new Moral(new RFC("AAA9123jsad", TipodePersona.Moral), "9512345678", fcIn1, fcOp, "asdasdsad", "S.C. de R.L.", juan, fcOp);
+            
+        } catch (IntervalosFechaException ex) {
+            ex.printStackTrace();
+        } catch (PersonaFisicaException ex) {
+            ex.printStackTrace();
+        } catch (RFCException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        
+        Direciones direccinoFisica = new Direciones(TipoDireccion.FISICA, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
+        Direciones direccinoFiscal = new Direciones(TipoDireccion.FISCAL, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
+        
+        fisica.addDireccion(direccinoFisica);
+        fisica.addDireccion(direccinoFiscal);
+        
+        moral.addDireccion(direccinoFiscal);
+        moral.addDireccion(direccinoFisica);
+        
+        
+        juan.addDireccion(new Direccion(TipoDireccion.FISCAL, "Cui", "12", null, "Del Valle", "68150", "Xoxo"));
+        
+        try {
+            fisica.addRegimen(Regimen.INCORPORACION);
+            fisica.addRegimen(Regimen.IEPS);
+            
+            moral.addRegimen(Regimen.IEPS);
+            
+            juan.addRegimen(Regimen.INTERMEDIO);
+            
+            //fisica.addRegimen(Regimen.INTERMEDIO);
+        } catch (RegimenIncompatibleException ex) {
+            ex.printStackTrace();
+        }
+        
+        juan.actualizarObligaciones();
+        
+        
+        TipoPeriodo tp = TipoPeriodo.getPeriodo(Periodicidad.TRIMESTRAL, new Fecha(1,1,2016));
+
+        Periodo inicial = new Periodo(tp, 2016);
+ 
+        System.out.println(inicial);
+        System.out.println(inicial.next());
+        System.out.println(inicial.next().next());
+        System.out.println(inicial.next().next().next());
+        
+        System.out.println(inicial.next().next().next().next());
+        System.out.println("************");
+        
         
     }
 }

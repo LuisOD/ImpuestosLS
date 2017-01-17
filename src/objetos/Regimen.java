@@ -4,21 +4,19 @@ package objetos;
  * @author Luis_Od
  */
 public enum Regimen {
-    INCORPORACIONFISCAL(1),
-    INTERMEDIO(1),
-    CEDULAR(2),
-    HOSPEDAJE(3),
-    IEPS(4);
+    INCORPORACIONFISCAL(Periodicidad.BIMESTRAL),
+    INTERMEDIO(Periodicidad.MENSUAL),
+    CEDULAR(Periodicidad.BIMESTRAL),
+    HOSPEDAJE(Periodicidad.TRIMESTRAL),
+    IEPS(Periodicidad.MENSUAL);
     
     
-    private Regimen(int paramet){
-        numerito = paramet;
+    private Regimen(Periodicidad periodicidad){
+        this.periodicidad = periodicidad;
     }
-    private int numerito;
+    private Periodicidad periodicidad;
 
-    public int getNumerito() {
-        return numerito;
-    }
+    
     
     
 }

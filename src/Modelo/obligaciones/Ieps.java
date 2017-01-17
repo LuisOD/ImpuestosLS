@@ -1,13 +1,19 @@
 
 package Modelo.obligaciones;
 
+import objetos.Periodo;
+import objetos.Regimen;
+
 /**
  * @author Luis_Od
  */
 public class Ieps extends Impuesto{
-
-    public Ieps() {
-        
+    private float litrosMagna;
+    private float litrosPremium;
+    private float litrosDisel;
+    
+    public Ieps(Periodo per) {
+        super(Regimen.IEPS,per);
     }
     
      @Override
@@ -21,7 +27,10 @@ public class Ieps extends Impuesto{
 
     @Override
     public float totalPagar() {
-         return calculaImpuesto()+calculaRecargos();
+        Float magna = litrosMagna * (float)15.99;
+        Float premium = litrosPremium * (float) 17.79;
+        Float disel = litrosDisel * (float) 12;
+        return magna + premium+disel;
     }
 
 }
