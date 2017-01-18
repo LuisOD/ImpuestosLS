@@ -33,7 +33,8 @@ public class Impuestos {
         Fisica fisica = null;
         Moral moral = null;
         Fisica juan = null;
-    public static void main(String[] args) throws DireccionException, RFCException, RegimenException {
+        @SuppressWarnings("ResultOfObjectAllocationIgnored")
+    public static void main(String[] args)throws DireccionException, RFCException{
        
         Fecha fins = new Fecha(2,2,1990);//fecha nacimiento
         //Fecha f1 = new Fecha();
@@ -102,25 +103,25 @@ public class Impuestos {
         regimenes.add(Regimen.INCORPORACIONFISCAL);
         regimenes.add(Regimen.INTERMEDIO);
         
-        for (Regimen regimen : regimenes) {//impresion de regimenes
-            System.out.print(regimen.getNumerito());            
-            System.out.println(" "+regimen);
-        }
+//        for (Regimen regimen : regimenes) {//impresion de regimenes
+//            System.out.print(regimen.getNumerito());            
+//            System.out.println(" "+regimen);
+//        }
         System.out.println("**************************");
         
-        ArrayList<Obligacion> arreglo = new ArrayList<>();
-        Obligacion ob = new Cedular();
-        arreglo.add(ob);
-        arreglo.add(new Ieps());
-        arreglo.add(new Incorporacion());        
-        arreglo.add(new Cedular());
+//        ArrayList<Obligacion> arreglo = new ArrayList<>();
+//        Obligacion ob = new Cedular();
+//        arreglo.add(ob);
+//        arreglo.add(new Ieps());
+//        arreglo.add(new Incorporacion());        
+//        arreglo.add(new Cedular());
         
-        for (int i = 0; i < arreglo.size(); i++) {
-            Obligacion obj = arreglo.get(i);
-            obj.totalPagar();
-            arreglo.get(i).totalPagar();
-        }
-        System.out.println("Total a pagar es : "+ob.totalPagar());
+//        for (int i = 0; i < arreglo.size(); i++) {
+//            Obligacion obj = arreglo.get(i);
+//            obj.totalPagar();
+//            arreglo.get(i).totalPagar();
+//        }
+//        System.out.println("Total a pagar es : "+ob.totalPagar());
         
         System.out.println("*************");//Validacion de periodo
         //Fecha dsd = new Fecha(12,12,2012);
@@ -142,9 +143,16 @@ public class Impuestos {
         
         
         
+        Fisica fisica = null;
+        Moral moral = null;
+        Fisica juan = null;
+        
         try {
-            Fisica pf1 = new Fisica(reFc, "9512267834", fcIn1, fcOp, "Luis", "Lopez", "Ojeda", fins);
-            Moral pas = new Moral(new RFC("AAA9123jsad", TipodePersona.Moral), "9512345678", fcIn1, fcOp, "asdasdsad", "S.C. de R.L.", juan, fcOp);
+            RFC rfc = new RFC("RIOD810904815", TipodePersona.Fisica);        
+            fisica = new Fisica(reFc, "9512267834", fcIn1,fcOp,"Luis", "Lopez", "Ojeda",fcIn1);
+
+            juan = new Fisica(new RFC("GABJ9403189IP", TipodePersona.Fisica), "9512515114", new Fecha(15, 8, 2016), new Fecha(1, 12, 2017), "Juan Antonio", "Gabriel", "Bolaños", new Fecha(18,3,1994));
+            
             
         } catch (IntervalosFechaException ex) {
             ex.printStackTrace();
@@ -156,8 +164,8 @@ public class Impuestos {
             ex.printStackTrace();
         }
         
-        Direciones direccinoFisica = new Direciones(TipoDireccion.FISICA, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
-        Direciones direccinoFiscal = new Direciones(TipoDireccion.FISCAL, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
+        Direciones direccinoFisica = new Direciones(TipodeDireccion.FISICA.FISICA, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
+        Direciones direccinoFiscal = new Direciones(TipodeDireccion.FISICA, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
         
         fisica.addDireccion(direccinoFisica);
         fisica.addDireccion(direccinoFiscal);
@@ -166,15 +174,15 @@ public class Impuestos {
         moral.addDireccion(direccinoFisica);
         
         
-        juan.addDireccion(new Direccion(TipoDireccion.FISCAL, "Cui", "12", null, "Del Valle", "68150", "Xoxo"));
+        juan.addDireccion(new Direciones(TipodeDireccion.FISICA, "Cui", "12", null, "Del Valle", "68150", "Xoxo"));
         
         try {
-            fisica.addRegimen(Regimen.INCORPORACION);
+            fisica.addRegimen(Regimen.INCORPORACIONFISCAL);
             fisica.addRegimen(Regimen.IEPS);
             
             moral.addRegimen(Regimen.IEPS);
             
-            juan.addRegimen(Regimen.INTERMEDIO);
+            juan.addRegimen(Regimen.INCORPORACIONFISCAL);
             
             //fisica.addRegimen(Regimen.INTERMEDIO);
         } catch (RegimenIncompatibleException ex) {
@@ -183,8 +191,15 @@ public class Impuestos {
         
         juan.actualizarObligaciones();
         
+        Incorporacion incor = (Incorporacion)juan.getObligacion(Regimen.INCORPORACIONFISCAL);
+        System.out.println(incor);
         
-        TipoPeriodo tp = TipoPeriodo.getPeriodo(Periodicidad.TRIMESTRAL, new Fecha(1,1,2016));
+        incor.set((float)34000);
+        System.out.println(incor.totalPagar());
+        incor.setObligacionCumplida(true);
+       
+        Incorporacion incor2 = (Incorporacion)juan.getObligacion(Regimen.INCORPORACIONFISCAL);
+        System.out.println(incor2);
 
         Periodo inicial = new Periodo(tp, 2016);
  

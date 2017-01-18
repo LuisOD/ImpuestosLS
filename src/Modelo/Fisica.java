@@ -1,36 +1,36 @@
 
 package Modelo;
 
-import Excepciones.FisicaException;
 import Excepciones.IntervalosfechaException;
 import Excepciones.PersonaFisicaException;
-import java.util.HashSet;
 import objetos.Fecha;
 import objetos.RFC;
-import objetos.Regimen;
+
 
 /**
  * @author Luis_Od
  */
 public class Fisica extends Persona{
-    private String nombre;
+   private String nombre;
     private String paterno;
-    private String matern;
+    private String materno;
     private Fecha fechaNacimiento;
 
-    public Fisica(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones, String nombre, String paterno, String matern, Fecha fechaNacimiento) throws IntervalosfechaException, PersonaFisicaException {
-        super(rfc, telefono, fechaInscripcion, fechaOperaciones);
+    public Fisica(RFC rfc, String nombre, String paterno, String materno, Fecha fechaNacimiento,
+            String telefono, Fecha fechaInscripcion, Fecha fechaInicioOperaciones) throws IntervalosfechaException, PersonaFisicaException {
+        super(rfc, telefono, fechaInscripcion, fechaInicioOperaciones);
         this.nombre = nombre;
         this.paterno = paterno;
-        this.matern = matern;
+        this.materno = materno;
         this.fechaNacimiento = fechaNacimiento;
-        if(!isValido()){
+        if (!isValido()){
             throw new PersonaFisicaException();
         }
     }
-    
-    public boolean isValido(){
-        boolean resultado = isValido();
+
+    @Override
+    public boolean isValido() {
+        boolean resultado = super.isValido();
         return resultado && fechaNacimiento.diferenciaAnios() >= 18;
     }
 
@@ -50,12 +50,12 @@ public class Fisica extends Persona{
         this.paterno = paterno;
     }
 
-    public String getMatern() {
-        return matern;
+    public String getMaterno() {
+        return materno;
     }
 
-    public void setMatern(String matern) {
-        this.matern = matern;
+    public void setMaterno(String materno) {
+        this.materno = materno;
     }
 
     public Fecha getFechaNacimiento() {
@@ -66,16 +66,8 @@ public class Fisica extends Persona{
         this.fechaNacimiento = fechaNacimiento;
     }
 
-  
-  
-    public void valida() throws FisicaException{
-        //int fisAux = 0;
-        //if(() == this.fechaNacimiento){
-            
-        //}else{
-        //    throw new FisicaException("Error");
-        //}
-        //return false;
+    public Integer getEdad() {
+        return fechaNacimiento.diferenciaAnios();
     }
    
     

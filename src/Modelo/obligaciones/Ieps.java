@@ -13,7 +13,7 @@ public class Ieps extends Impuesto{
     private float litrosDisel;
     
     public Ieps(Periodo per) {
-        super(Regimen.IEPS,per);
+        super(Regimen.IEPS, per);
     }
     
      @Override
@@ -32,5 +32,30 @@ public class Ieps extends Impuesto{
         Float disel = litrosDisel * (float) 12;
         return magna + premium+disel;
     }
+
+    public float getLitrosMagna() {
+        return litrosMagna;
+    }
+
+    public void setLitrosMagna(float litrosMagna) {
+        this.litrosMagna = litrosMagna;
+    }
+
+    public float getLitrosPremium() {
+        return litrosPremium;
+    }
+
+    public void setLitrosPremium(float litrosPremium) {
+        this.litrosPremium = litrosPremium;
+    }
+
+    public float getLitrosDisel() {
+        return litrosDisel;
+    }
+
+    public void setLitrosDisel(float litrosDisel) {
+        this.litrosDisel = litrosDisel;
+    }
+    
 
 }

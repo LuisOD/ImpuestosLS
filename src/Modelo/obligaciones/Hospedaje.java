@@ -11,7 +11,13 @@ import objetos.Regimen;
 public class Hospedaje extends Impuesto{
 
     public Hospedaje(Periodo per) {
-        super(Regimen.HOSPEDAJE,per);
+        super(Regimen.HOSPEDAJE, per);
+    }
+
+    @Override
+    public Float totalPagar() {
+        Float impuesto = getIngresos() * (float)0.02;
+        return super.totalPagar() + impuesto;
     }
     
     

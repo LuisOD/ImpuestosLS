@@ -1,28 +1,16 @@
 
 package Modelo.obligaciones;
 
+import objetos.Periodo;
+import objetos.Regimen;
+
 /**
  *
  * @author Luis_Od
  */
-public class Intermedio extends Impuesto{
+public class Intermedio extends General{
 
-   public void metodoPrueba(){
-        System.out.println("INTERMEDIO");
+   public Intermedio(Periodo per) {
+        super(Regimen.INTERMEDIO, per);
     }
-
-    @Override
-    public float calculaRecargos(){
-        return (float) 2.0;
-    }  
-    @Override
-    public float calculaImpuesto(){
-        return (float) 1.0;
-    }    
-
-    @Override
-    public float totalPagar() {
-         return calculaImpuesto()+calculaRecargos();
-    }
-    
 }

@@ -37,20 +37,6 @@ public enum TipoPeriodo {
         this.mesFinal = mesFin;
     }
 
-    public TipoPeriodo next(){
-        TipoPeriodo resultado = null;
-        TipoPeriodo tp[] = TipoPeriodo.values();
-        for(TipoPeriodo tipoperiodo : tp){
-            if(tipoperiodo.getPeriodicidad()== this.getPeriodicidad()){
-                //System.out.println(tipoperiodo);
-                if(tipoperiodo.getMesInicio()==this.getMesFinal()){
-                    return tipoperiodo;
-                    
-                }
-            }    
-        }
-        return resultado;
-    }
     public Periodicidad getPeriodicidad() {
         return periodicidad;
     }
@@ -63,17 +49,29 @@ public enum TipoPeriodo {
         return mesFinal;
     }
  
-    public static TipoPeriodo getPeriodo(Periodicidad p, Fecha fechita){
+    public TipoPeriodo next(){
         TipoPeriodo resultado = null;
         TipoPeriodo tp[] = TipoPeriodo.values();
-        for(TipoPeriodo tipoperiodo : tp){
-            if(tipoperiodo.getPeriodicidad()==p){
-                if(tipoperiodo.getMesInicio()<=fechita.getMes() && tipoperiodo.getMesFinal()>=fechita.getMes()){
-                    return tipoperiodo;
+        for (TipoPeriodo tipoPeriodo : tp) {
+            if (tipoPeriodo.getPeriodicidad() == this.getPeriodicidad() ){
+                if (tipoPeriodo.getMesInicio()== this.getMesFinal()+1){
+                    return tipoPeriodo;
                 }
             }
-            //System.out.println(tipoperiodo);
+        }
+        return resultado;        
+    }
+    public static TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
+        TipoPeriodo resultado = null;
+        TipoPeriodo tp[] = TipoPeriodo.values();
+        for (TipoPeriodo tipoPeriodo : tp) {
+            if (tipoPeriodo.getPeriodicidad() == p ){
+                if ((tipoPeriodo.getMesInicio()<= f.getMes())&&
+                        (tipoPeriodo.getMesFinal() >= f.getMes())){
+                    return tipoPeriodo;
+                }
+            }
         }
         return resultado;
-    }        
+    }       
 }

@@ -10,27 +10,22 @@ import objetos.Regimen;
  */
 //clase abstracta
 public class Cedular extends Impuesto{
-    private float habitacion;
-    private float localComercial;
+     private Float totalCasaHabitacion;
+    private Float totalLocalComercial;
 
-    public Cedular(Periodo per) {
+    public Cedular(Periodo per){
         super(Regimen.CEDULAR, per);
-    }
-    
-    @Override
-    public float calculaRecargos(){
-        return (float) 0.0;
-    }  
-    @Override
-    public float calculaImpuesto(){
-    return (float) 0.0;
     }    
 
+    public Cedular() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
     @Override
-    public float totalPagar() {
-        Float total = habitacion * (float)0.10 + localComercial * (float)0.25;
-        Float iva = (habitacion + localComercial)* (float) 0.16;
-        return total+iva;
+    public Float totalPagar() {
+        Float total = totalCasaHabitacion * (float)0.10 + totalLocalComercial * (float)0.25;
+        Float iva = (totalCasaHabitacion + totalLocalComercial) * (float)0.16;
+        return total + iva;
     }
 
 }
