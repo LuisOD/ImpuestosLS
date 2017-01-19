@@ -1,8 +1,12 @@
-
 package Modelo;
 
 import Excepciones.IntervalosfechaException;
 import Excepciones.RegimenException;
+import Modelo.obligaciones.Cedular;
+import Modelo.obligaciones.Hospedaje;
+import Modelo.obligaciones.Ieps;
+import Modelo.obligaciones.Incorporacion;
+import Modelo.obligaciones.Intermedio;
 import Modelo.obligaciones.Obligacion;
 import java.util.HashSet;
 import objetos.Fecha;
@@ -29,7 +33,7 @@ public abstract class Persona {
     private HashConjunto regimenes;
     private ArrayList<Obligacion> obligaciones;
 
-    public Persona(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones,ArrayList<Obligacion> obligaciones) throws IntervalosfechaException{
+    public Persona(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones) throws IntervalosfechaException{
         this.rfc = rfc;
         this.telefono = telefono;
         this.fechaInscripcion = fechaInscripcion;
@@ -39,8 +43,8 @@ public abstract class Persona {
         this.obligaciones = obligaciones;
     }
 
-    private boolean isValido() {
-        return false;
+    public boolean isValido() {
+         return fechaInscripcion.compareTo(fechaOperaciones) <= 0;
     }   
     
     public boolean addDireccion(Direciones dir){
@@ -67,21 +71,46 @@ public abstract class Persona {
             throw new RegimenException();
         }
     }
-    
+    public void actualizarObligaciones(){
+        Integer anio = fechaOperaciones.getAnio();
+        for (Regimen regimen : regimenes) {
+            TipoPeriodo tp = TipoPeriodo.getPeriodo(regimen.getPeriodicidad(), fechaOperaciones);
+            Periodo periodo = new Periodo(tp, anio);  
+            Integer anioActual = (new Fecha()).getAnio();
+            do{
+            Obligacion obligacion = null;
+            switch (regimen) {
+                case INCORPORACIONFISCAL:
+                    obligacion = new Incorporacion(periodo);
+                    break;
+                case INTERMEDIO:
+                    obligacion = new Intermedio(periodo);
+                    break;
+                case CEDULAR:
+                    obligacion = new Cedular(periodo);
+                    break;                
+                case IEPS:
+                    obligacion = new Ieps(periodo);
+                    break;                
+                case HOSPEDAJE:
+                    obligacion = new Hospedaje(periodo);
+                    break;                
+                default:
+                    throw new AssertionError();
+            }
+            obligaciones.add(obligacion);
+            periodo = periodo.next();
+            }while(periodo.getEjercicio() <= anioActual);
+        }
+        
+                
+    }
     public RFC getRfc() {
         return rfc;
     }
 
     public void setRfc(RFC rfc) {
         this.rfc = rfc;
-    }
-
-    public HashSet<Direciones> getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(HashSet<Direciones> direccion) {
-        this.direccion = direccion;
     }
 
     public String getTelefono() {
@@ -112,23 +141,5 @@ public abstract class Persona {
     public void setFechaOperaciones(Fecha fechaOperaciones) {
         this.fechaOperaciones = fechaOperaciones;
     }
-    public void actualizarObligaciones(){
-        Integer anio = fechaInscripcion.getAnio();
-        TipoPeriodo tp = TipoPeriodo.getPeriodo(getPeriodicidad(), fechaOperaciones);
-        
-        Periodo periodo = new Periodo(tp,anio);
-        do{
-            Obligacion obligacion = null;
-        switch(regimen){
-            case INCORPORACION:
-                break;
-            case
-        }
-        //obligaciones.add(inicial);
-        }
-        
-                
-    }
-    public abstract Periodicidad getPeriodicidad();
     
 }

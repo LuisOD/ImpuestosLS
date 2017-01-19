@@ -3,6 +3,8 @@ package Modelo;
 
 import Excepciones.IntervalosfechaException;
 import Excepciones.PersonaFisicaException;
+import Modelo.obligaciones.Obligacion;
+import java.util.ArrayList;
 import objetos.Fecha;
 import objetos.RFC;
 
@@ -16,9 +18,9 @@ public class Fisica extends Persona{
     private String materno;
     private Fecha fechaNacimiento;
 
-    public Fisica(RFC rfc, String nombre, String paterno, String materno, Fecha fechaNacimiento,
-            String telefono, Fecha fechaInscripcion, Fecha fechaInicioOperaciones) throws IntervalosfechaException, PersonaFisicaException {
-        super(rfc, telefono, fechaInscripcion, fechaInicioOperaciones);
+    public Fisica(RFC rfc,String nombre, String paterno, String materno, Fecha fechaNacimiento,
+             String telefono, Fecha fechaInscripcion, Fecha fechaOperaciones) throws IntervalosfechaException, PersonaFisicaException {
+        super(rfc, telefono, fechaInscripcion, fechaOperaciones);
         this.nombre = nombre;
         this.paterno = paterno;
         this.materno = materno;
@@ -28,7 +30,10 @@ public class Fisica extends Persona{
         }
     }
 
-    @Override
+
+
+    
+   @Override
     public boolean isValido() {
         boolean resultado = super.isValido();
         return resultado && fechaNacimiento.diferenciaAnios() >= 18;

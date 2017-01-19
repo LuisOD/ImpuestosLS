@@ -9,7 +9,5 @@ public interface Obligacion { //resuelve la herencia multiple* cada metodo debe 
     public float calculaImpuesto();
     public float calculaRecargos();
     public float totalPagar();
-
-    public void metodoPrueba();
         
 }

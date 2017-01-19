@@ -5,7 +5,7 @@ import java.time.DayOfWeek;
 /**
  * @author Luis_Od
  */
-public class Periodo extends Fecha{
+public class Periodo{
     
     private TipoPeriodo tipoPeriodo;
     private Integer ejercicio;
@@ -22,7 +22,7 @@ public class Periodo extends Fecha{
         f.aumentarDiaInhabil(DayOfWeek.SATURDAY,DayOfWeek.SUNDAY);
         return f;
     }
-    public Fecha fechaLimite( Integer diasAdicionales){//falta
+    public Fecha fechaLimite( Integer diasAdicionales){
         Fecha cero = fechaCero();
         for (int i = 0; i < diasAdicionales; i++) {
             cero.aumentarDiaInhabil(DayOfWeek.FRIDAY,DayOfWeek.SATURDAY,DayOfWeek.SUNDAY);

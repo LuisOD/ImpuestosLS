@@ -9,7 +9,8 @@ import objetos.Regimen;
  * @author Luis_Od
  */
 public class Incorporacion extends Impuesto{
-     private Float ingresosBismestrales;
+    
+    private Float ingresosBismestrales;
     
     public Incorporacion(Periodo per){
         super(Regimen.INCORPORACIONFISCAL, per);
