@@ -6,8 +6,8 @@ package Modelo.obligaciones;
  */
 public interface Obligacion { //resuelve la herencia multiple* cada metodo debe de ser definido en donde se implemente la interface
     
-    public float calculaImpuesto();
-    public float calculaRecargos();
-    public float totalPagar();
+    public Float calculaImpuesto();
+    public Float calculaRecargos();
+    public Float totalPagar();
         
 }

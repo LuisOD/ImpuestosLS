@@ -13,26 +13,23 @@ public abstract class Impuesto implements Obligacion{
     private Periodo periodo;
     private Boolean obligacionCumplida;
     
-    public Impuesto(Regimen rgm, Periodo per){
-        this.regimen = rgm;
+    public Impuesto(Regimen regm, Periodo per){
+        this.regimen = regm;
         this.periodo = per;
         obligacionCumplida = false;
     }
-    
-    public Float calculoImpuesto(){
+    @Override
+    public Float calculaImpuesto(){
         return totalPagar() + calculaRecargos();
     }
-    
     @Override
-    public Float calculaRecargos() {
-        if (getPeriodo().getFechalmlpago().compareTo(new Fecha()) <= 0){
-            return (float)0.0;
+    public Float calculaRecargos(){
+        if(getPeriodo().getFechalmlpago().compareTo(new Fecha())<=0){
+            return (float) 0.0;
         }else{
-            return totalPagar()*(float)0.03;
+            return totalPagar()*(float) 0.03;
         }
-    }    
-    
-    
+    }
     public String toString(){
         return getRegimen().toString()+" "+getPeriodo().toString();
     }
