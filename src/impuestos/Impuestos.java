@@ -25,6 +25,7 @@ import objetos.Regimen;
 import objetos.TipoPeriodo;
 import objetos.TipodeDireccion;
 import objetos.TipodePersona;
+import pantallas.PrincipalFrame;
 /**
  *
  * @author Luis_Od
@@ -35,7 +36,7 @@ public class Impuestos {
         Fisica juan = null;
         @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public static void main(String[] args)throws DireccionException, RFCException{
-       
+        PrincipalFrame main = new PrincipalFrame();
         Fecha fins = new Fecha(2,2,1990);//fecha nacimiento
         //Fecha f1 = new Fecha();
         //System.out.println(f);

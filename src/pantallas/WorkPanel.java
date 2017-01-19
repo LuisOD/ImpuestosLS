@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class WorkPanel extends JPanel{
 
     public WorkPanel() {
-        setBackground(Color.GREEN);
+        //setBackground(Color.GREEN);
     }
     
 }
