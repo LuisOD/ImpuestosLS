@@ -20,8 +20,7 @@ public class PrincipalFrame extends JFrame{
     private JToolBar toolbar;
     private FisicaDialog dlgFisica;
     private MoralDialog dlgMoral;
-    private JButton btnPrueba;
-    private JButton btnPruebaMoral;
+    
     
     public PrincipalFrame(){
         super("Impuestos");
@@ -34,34 +33,8 @@ public class PrincipalFrame extends JFrame{
         pnlWork = new WorkPanel();
         toolbar = new JToolBar();
         
-        btnPrueba = new JButton("Prueba");
-        btnPrueba.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                inscribirPersonaFisicaClick();
-            }
-        });
+         
         
-        btnPruebaMoral = new JButton("Prueba");
-        btnPruebaMoral.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                inscribirPersonaMoralClick();
-            }
-        });  
-        
-        
-        toolbar.add(btnPrueba);
-        toolbar.add(btnPruebaMoral);
-        
-        
-        dlgFisica = new FisicaDialog(this);
-
-        
-        dlgMoral = new MoralDialog(this);
-        
-        super.add(toolbar, BorderLayout.NORTH);        
-        super.add(pnlBusqueda, BorderLayout.SOUTH);
         super.add(pnlWork, BorderLayout.CENTER);
         super.setVisible(true);
     }
@@ -95,8 +68,18 @@ public class PrincipalFrame extends JFrame{
         mcontribuyentes.add(mdeclarar);
         maiuda.add(macerca);
         
+        mfisica.addActionListener((ae) -> {
+            dlgFisica = new FisicaDialog(this);
+            inscribirPersonaFisicaClick();
+            
+        });
+        mmoral.addActionListener((ae) -> {
+            dlgMoral = new MoralDialog(this);
+            inscribirPersonaMoralClick();
+        });
         msalir.addActionListener((ae) -> { //cerrar la ventana principal
             System.exit(0);
+        
         });
         
         menu.add(marchivo);
@@ -106,12 +89,12 @@ public class PrincipalFrame extends JFrame{
     }
     private void inscribirPersonaFisicaClick(){
         dlgFisica.setVisible(true);
-        System.out.println("añkjfkadjns");
+   
     }
     
     private void inscribirPersonaMoralClick(){
         dlgMoral.setVisible(true);
-        System.out.println("añkjfkadjns");
+   
     }   
 }
 
