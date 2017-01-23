@@ -10,6 +10,7 @@ import Excepciones.PersonaFisicaException;
 import Excepciones.RFCException;
 import Modelo.Moral;
 import Modelo.Persona;
+
 import javax.swing.JFrame;
 import objetos.Fecha;
 import objetos.RFC;
@@ -48,6 +49,7 @@ public class MoralDialog extends PersonaDialog{
                 new Fecha(),
                 new Fecha());    
         return moral;
+        
     }
 
     public TEdit getEdtRazonSocial() {

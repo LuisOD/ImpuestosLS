@@ -9,10 +9,10 @@ import java.util.Objects;
 public class RFC {
 
     private String rfc;
-    private final TipodePersona tipo;
+    private TipodePersona tipodePersona;
     
     public RFC(String rfc1, TipodePersona tipo)throws RFCException{
-        this.tipo = tipo;
+        this.tipodePersona = tipo;
         rfc = rfc1.toUpperCase();
         if(!this.valida()){
             throw new RFCException();
@@ -21,7 +21,7 @@ public class RFC {
     }
 
       private boolean valida(){
-        if(tipo == TipodePersona.Fisica){
+        if(tipodePersona == TipodePersona.Fisica){
             return rfc.matches("^[A-Z]{4}(\\d{6})((\\D|\\d){3})?$");
         }
         else{
@@ -41,6 +41,4 @@ public class RFC {
         return rfc;
     }
 
-   
-     
 }

@@ -43,4 +43,13 @@ public class TEdit extends JPanel{
     public String getText(){
         return edit.getText();
     }
+
+    public JTextField getEdit() {
+        return edit;
+    }
+
+    public void setEdit(JTextField edit) {
+        this.edit = edit;
+    }
+    
 }
