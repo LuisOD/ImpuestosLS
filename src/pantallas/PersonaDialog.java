@@ -20,7 +20,6 @@ import javax.swing.JPanel;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -34,11 +33,7 @@ abstract class PersonaDialog extends JDialog{
     private JLabel txtTitulo;
 
     private PersonaDialogListener listener;
-    
-    private JPanel pnlElementos;
-    private JLabel lblRFC;
-    private JTextField edtRFC;
-    
+
     public PersonaDialog(JFrame frame) {
         super(frame, true);
         super.setSize(600, 400);
@@ -73,34 +68,16 @@ abstract class PersonaDialog extends JDialog{
         });
 
         btnCancelar = new JButton("Cancelar");
-        btnCancelar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                
-            }
-        });
+        //btnCancelar.addActionListener(l);
 
         pnlActions = new JPanel();
         pnlActions.setLayout(new FlowLayout(FlowLayout.RIGHT));
         pnlActions.setBackground(Color.CYAN);
         pnlActions.add(btnAceptar);
         pnlActions.add(btnCancelar);
-        
-        lblRFC = new JLabel("R.F.C.: ");
-        lblRFC.setBounds(50, 50, 60, 20);
-        edtRFC = new JTextField(20);
-        edtRFC.setBounds(100, 50, 100, 20);
-        
-        pnlElementos = new JPanel();
-        pnlElementos.setBackground(Color.yellow);
-        pnlElementos.setLayout(null);//definir posiciones fijas
-        
-        pnlElementos.add(lblRFC);
-        pnlElementos.add(edtRFC);
 
         super.add(pnlActions, BorderLayout.SOUTH);
         super.add(pnlEncabezado, BorderLayout.NORTH);
-        super.add(pnlElementos,BorderLayout.CENTER);
     }
     public void setListener(PersonaDialogListener listener) {
         this.listener = listener;
