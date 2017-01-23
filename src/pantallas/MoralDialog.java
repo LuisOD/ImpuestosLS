@@ -40,12 +40,31 @@ public class MoralDialog extends PersonaDialog{
     @Override
     protected Persona crearObjeto() throws IntervalosfechaException, PersonaFisicaException, RFCException {
         Moral moral = new Moral (new RFC(super.edtRFC.getText(), TipodePersona.Moral), 
-                edtRazonSocial.getText(), edtTipoSociedad.getText(), 
-                null, 
+                edtRazonSocial.getText(), 
+                edtTipoSociedad.getText(),
+                null,
                 super.edtTelefono.getText(), 
                 new Fecha(), 
                 new Fecha(),
                 new Fecha());    
         return moral;
     }
+
+    public TEdit getEdtRazonSocial() {
+        return edtRazonSocial;
+    }
+
+    public void setEdtRazonSocial(TEdit edtRazonSocial) {
+        this.edtRazonSocial = edtRazonSocial;
+    }
+
+    public TEdit getEdtTipoSociedad() {
+        return edtTipoSociedad;
+    }
+
+    public void setEdtTipoSociedad(TEdit edtTipoSociedad) {
+        this.edtTipoSociedad = edtTipoSociedad;
+    }
+    
 }
+
