@@ -69,12 +69,12 @@ abstract class PersonaDialog extends JDialog{
                 } catch (PersonaFisicaException ex) {
                     JOptionPane.showMessageDialog(frame,
                             "La persona debe ser mayor de edad para inscribirse",
-                            "Estas chavo, chavo !",
+                            "Ingrese la fecha correcta ",
                             JOptionPane.WARNING_MESSAGE);
                 } catch (RFCException ex) {
                     JOptionPane.showMessageDialog(frame,
                             "RFC mal escrito",
-                            "Pichon !",
+                            " ",
                             JOptionPane.WARNING_MESSAGE);                    
                 }
 
@@ -87,7 +87,7 @@ abstract class PersonaDialog extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 int n = JOptionPane.showConfirmDialog(
                         frame,
-                        "De'veritas quieres cerrar?",
+                        "¿Quieres cerrar?",
                         "Cancelar cambios",
                         JOptionPane.YES_NO_OPTION);
                 if (n == JOptionPane.YES_OPTION){
